@@ -28,58 +28,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Form submission
+    // Form submission using EmailJS
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Create form data for submission
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('subject', subject);
-            formData.append('message', message);
-            formData.append('recipient', 'psk@njit.edu'); // Hidden actual recipient
-            
-            // Show loading state
+            // Show loading state on the button
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitButton.disabled = true;
             
-            // Send the form data using a service like Formspree
-            fetch('https://formspree.io/f/your-formspree-endpoint', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Send email using EmailJS - replace with your actual service ID and template ID
+            emailjs.send('service_sqsvze5', 'template_ojrvbu1', {
+                from_name: name,
+                reply_to: email,
+                subject: subject,
+                message: message
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                // Show success message
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 showFormMessage('success', 'Message sent successfully! I\'ll get back to you soon.');
                 contactForm.reset();
             })
-            .catch(error => {
-                // Show error message
+            .catch(function(error) {
+                console.log('FAILED...', error);
                 showFormMessage('error', 'Oops! There was a problem sending your message. Please try again.');
-                console.error('Error:', error);
             })
-            .finally(() => {
+            .finally(function() {
                 // Reset button state
                 submitButton.innerHTML = originalButtonText;
                 submitButton.disabled = false;
