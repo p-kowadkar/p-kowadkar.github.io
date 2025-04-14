@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Pranav Kowadkar</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- Chatbot CSS -->
+    <link rel="stylesheet" href="static/css/chatbot.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">pk</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="education.html" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Title -->
+        <section class="page-title">
+            <div class="container">
+                <h1>My Projects</h1>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Scalable Real-time Content Recommendation Engine</h3>
+                            <p class="project-tech">AWS, Spark, Airflow, Kafka</p>
+                            <div class="project-description">
+                                <ul>
+                                    <li>Engineered a distributed recommendation engine using AWS EMR, Spark MLlib, and collaborative filtering algorithms, processing 100GB+ data daily with sub-second response times and achieving 92% user satisfaction.</li>
+                                    <li>Reduced data processing latency by 72% and improved content freshness by 4 hours using Airflow DAGs for orchestration, boosting user engagement and click-through rates by 15%.</li>
+                                    <li>Built a serverless microservice architecture using AWS Lambda, API Gateway, and DynamoDB, handling 50,000+ requests per second with 99.99% uptime, ensuring seamless scalability during demand spikes.</li>
+                                    <li>Implemented A/B testing framework to continuously evaluate recommendation algorithms, resulting in a 28% improvement in recommendation relevance over the initial baseline.</li>
+                                    <li>Designed data logging system with Kafka and Elasticsearch to capture user interactions, enabling real-time personalization and continuous model improvement.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Intelligent Financial Document Analysis System</h3>
+                            <p class="project-tech">RAG, AWS, Spark, Elasticsearch</p>
+                            <div class="project-description">
+                                <ul>
+                                    <li>Developed a Retrieval Augmented Generation (RAG) system with custom vector embeddings to analyze 1M+ financial documents daily, boosting insight generation speed by 58% and enhancing analytical efficiency.</li>
+                                    <li>Created domain-specific financial embeddings using BERT and fine-tuning techniques, increasing retrieval accuracy by 37% compared to general-purpose models for financial document classification.</li>
+                                    <li>Integrated GPT-4 with domain-specific prompting strategies and guardrails, improving insight relevance by 40% and saving 10+ hours of manual analysis weekly for financial analysts.</li>
+                                    <li>Designed sophisticated data pipelines with AWS Step Functions and SageMaker to preprocess, analyze, and extract insights from unstructured financial documents with 95% accuracy.</li>
+                                    <li>Implemented comprehensive security measures including encryption, access control, and audit logging to ensure compliance with financial data regulations.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Gravitational Wave Detection</h3>
+                            <p class="project-tech">Python, Time Series Analysis, TensorFlow/Keras, PySpark</p>
+                            <div class="project-description">
+                                <ul>
+                                    <li>Innovated a robust deep learning model using TensorFlow, Keras, and signal processing techniques for gravitational wave detection in LIGO/VIRGO data, achieving an accuracy of 86.84% on test data.</li>
+                                    <li>Processed 76GB+ of astronomical time-series data with PySpark and custom transforms, overcoming memory limitations to enable large-scale analysis across distributed computing clusters.</li>
+                                    <li>Implemented sophisticated neural architecture combining EfficientNetB7 for feature extraction with custom recurrent neural networks for precise binary classification of gravitational wave signals.</li>
+                                    <li>Created an ensemble model approach that improved detection sensitivity by 22% over baseline methods, particularly for low signal-to-noise ratio events.</li>
+                                    <li>Developed interactive visualization tools using Plotly and Dash to help physicists explore detection results and analyze waveform characteristics.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Anime Insights Platform</h3>
+                            <p class="project-tech">Python, Flask, GitHub CI/CD, Docker</p>
+                            <div class="project-description">
+                                <ul>
+                                    <li>Developed a full-stack web application with Flask backend and React frontend, implementing CRUD operations and AnimeDB API integration to deliver real-time updates for 100+ daily user interactions.</li>
+                                    <li>Implemented comprehensive GitHub Actions CI/CD pipeline for automated testing (pytest, Jest), code quality checks, and Heroku deployment, reducing deployment errors by 50% and deployment time by 70%.</li>
+                                    <li>Containerized the application using Docker and docker-compose for consistent development and production environments, standardizing deployments and cutting setup time by approximately 42%.</li>
+                                    <li>Designed and implemented a responsive, accessible UI using React, Redux, and Material-UI, achieving a 98% mobile usability score and 25% improvement in user engagement metrics.</li>
+                                    <li>Created a recommendation engine using collaborative filtering and content-based approaches, increasing user session duration by 35% and improving content discovery metrics.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="technologies section">
+            <div class="container">
+                <h2 class="section-title">Technologies Used</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Cloud & Infrastructure</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">AWS (EMR, Lambda, API Gateway, DynamoDB, S3, SageMaker)</li>
+                            <li class="skill-item">Azure Data Factory</li>
+                            <li class="skill-item">Docker & Containerization</li>
+                            <li class="skill-item">Microservices Architecture</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Data Processing</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">Apache Spark & Spark MLlib</li>
+                            <li class="skill-item">Apache Airflow</li>
+                            <li class="skill-item">Apache Kafka</li>
+                            <li class="skill-item">Elasticsearch</li>
+                            <li class="skill-item">PySpark</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Machine Learning & AI</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">TensorFlow & Keras</li>
+                            <li class="skill-item">Collaborative Filtering</li>
+                            <li class="skill-item">A/B Testing</li>
+                            <li class="skill-item">BERT & Vector Embeddings</li>
+                            <li class="skill-item">GPT-4 Integration</li>
+                            <li class="skill-item">RAG (Retrieval Augmented Generation)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Web Development</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">Flask</li>
+                            <li class="skill-item">React & Redux</li>
+                            <li class="skill-item">Material-UI</li>
+                            <li class="skill-item">GitHub Actions CI/CD</li>
+                            <li class="skill-item">Plotly & Dash</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/pkowadkar" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/p-kowadkar" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:pk.kowadkar@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Pranav Kowadkar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">Chat with Pranav's AI Assistant</div>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message message-bot">
+                    Hi there! I'm Pranav's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message here..." id="chatbot-input-field">
+                <button id="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JS -->
+    <script src="static/js/main.js"></script>
+    <!-- Chatbot JS -->
+    <script src="static/js/chatbot.js"></script>
+</body>
+</html>

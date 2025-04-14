@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Integration Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/chatbot.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #141414;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            color: #E50914;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .test-section {
+            background-color: #1A1A1A;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 3px solid #E50914;
+        }
+        
+        .test-section h2 {
+            color: #E50914;
+            margin-top: 0;
+        }
+        
+        .test-button {
+            background-color: #E50914;
+            color: #FFFFFF;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            background-color: #F40612;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chatbot Integration Test</h1>
+        
+        <div class="test-section">
+            <h2>Backend Connection Test</h2>
+            <p>This page tests the connection between the chatbot frontend and the Flask backend. The chatbot should be able to send messages to the backend and receive responses.</p>
+            <p>Click the chatbot icon in the bottom right corner to start a conversation.</p>
+            <button id="test-api" class="test-button">Test API Connection</button>
+            <div id="api-result" style="margin-top: 1rem;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Instructions</h2>
+            <p>Try asking the chatbot questions about Pranav's:</p>
+            <ul>
+                <li>Education background</li>
+                <li>Work experience</li>
+                <li>Skills and expertise</li>
+                <li>Projects</li>
+                <li>Contact information</li>
+            </ul>
+            <p>The chatbot should respond with information from Pranav's resume and LinkedIn profile.</p>
+        </div>
+    </div>
+    
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">Pranav's AI Assistant</div>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="Type your message...">
+                <button id="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./static/js/chatbot.js"></script>
+    <script>
+        // Test API connection
+        document.getElementById('test-api').addEventListener('click', function() {
+            const resultElement = document.getElementById('api-result');
+            resultElement.textContent = 'Testing API connection...';
+            resultElement.style.color = '#FFFFFF';
+            
+            fetch('/api/health')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API health check failed');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    resultElement.textContent = `API Connection Successful: ${data.message}`;
+                    resultElement.style.color = '#4BB543';
+                })
+                .catch(error => {
+                    resultElement.textContent = `API Connection Failed: ${error.message}`;
+                    resultElement.style.color = '#E50914';
+                });
+        });
+    </script>
+<script src="./static/js/static-api.js"></script>
+</body>
+</html>

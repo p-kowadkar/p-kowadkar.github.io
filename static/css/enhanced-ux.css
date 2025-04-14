@@ -1,0 +1,1143 @@
+/* Additional Netflix-inspired styles for enhanced UX */
+
+/* Netflix Logo Animation */
+.netflix-logo-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.netflix-logo-animation.animate {
+  animation: logoAnimation 4s forwards;
+}
+
+.netflix-logo-n {
+  color: #E50914;
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: -10px;
+  position: relative;
+  transform: scale(1);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+}
+
+@keyframes logoAnimation {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-category {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--netflix-red);
+  transition: var(--netflix-transition);
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-left-width: 5px;
+}
+
+.skill-category h3 {
+  color: var(--netflix-red);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.skill-category ul {
+  list-style: none;
+}
+
+.skill-category li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.skill-category li::before {
+  content: '•';
+  color: var(--netflix-red);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: var(--netflix-transition);
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: var(--netflix-red);
+  margin-right: 1rem;
+  width: 30px;
+  text-align: center;
+}
+
+.contact-text h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-form {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--netflix-red);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--netflix-light-gray);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--netflix-medium-gray);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--netflix-white);
+  transition: var(--netflix-transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Expanded Card */
+.netflix-card.expanded {
+  transform: scale(1.5);
+  z-index: 20;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-card.expanded .netflix-card-overlay {
+  opacity: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Scroll to top button */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 90px; /* Position next to chatbot */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--netflix-transition);
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+.scroll-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  background-color: var(--netflix-red-hover);
+  transform: translateY(-3px);
+}
+
+/* Loading animation */
+.netflix-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--netflix-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.netflix-loading.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  border-top-color: var(--netflix-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .netflix-logo-n {
+    font-size: 6rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .netflix-logo-n {
+    font-size: 4rem;
+  }
+  
+  .scroll-top {
+    bottom: 80px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Overflow handling for body during intro animation */
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+
+/* Experience slider expanded view */
+.netflix-slider.expanded-view .netflix-slider-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+}
+
+.netflix-slider.expanded-view {
+    overflow: visible;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+/* Adjust card sizing in expanded view */
+.netflix-slider.expanded-view .netflix-card {
+    flex: 0 0 calc(25% - 20px);
+    margin: 10px;
+    max-width: 280px;
+}
+
+/* Responsive adjustments for expanded view */
+@media (max-width: 1200px) {
+    .netflix-slider.expanded-view .netflix-card {
+        flex: 0 0 calc(33.333% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .netflix-slider.expanded-view .netflix-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .netflix-slider.expanded-view .netflix-card {
+        flex: 0 0 calc(100% - 20px);
+    }
+}
+
+
+/* Slider Navigation Controls */
+.netflix-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.netflix-slider-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.slider-nav:hover {
+    opacity: 1;
+    background-color: rgba(229, 9, 20, 0.8);
+}
+
+.slider-prev {
+    left: 10px;
+}
+
+.slider-next {
+    right: 10px;
+}
+
+/* Ensure cards have consistent width for smooth sliding */
+.netflix-card {
+    flex: 0 0 250px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .netflix-card {
+        flex: 0 0 200px;
+    }
+    
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .netflix-card {
+        flex: 0 0 180px;
+    }
+    
+    .slider-nav {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Card flip and expand animations */
+.netflix-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.netflix-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Card flip effect */
+.card-flip-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.card-flip-container.flipped {
+    width: 90% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    max-height: 80vh !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.card-flip-front, .card-flip-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-flip-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+.card-flip-back {
+    transform: rotateY(180deg);
+    background-color: #141414;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-flip-container.flipped .card-flip-front {
+    transform: rotateY(-180deg);
+}
+
+.card-flip-container.flipped .card-flip-back {
+    transform: rotateY(0deg);
+}
+
+/* Overlay for background when card is flipped */
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+
+/* Close button for flipped card */
+.card-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(229, 9, 20, 0.8);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.card-close-btn:hover {
+    background-color: #E50914;
+}
+
+/* Prevent scrolling when card is flipped */
+body.card-flipped {
+    overflow: hidden;
+}
+
+/* Style for detail content in flipped card */
+.card-flip-back .detail-content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .card-flip-back .detail-content {
+        flex-direction: row;
+    }
+    
+    .card-flip-back .detail-poster {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+    
+    .card-flip-back .detail-info {
+        flex: 0 0 60%;
+        max-width: 60%;
+        padding-left: 20px;
+    }
+}
+
+/* Ensure the flipped card content is properly styled */
+.card-flip-back .detail-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-flip-back .detail-title {
+    margin-top: 0;
+}
+
+/* Overlay for background when detail is shown */
+.detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+}
+
+/* Style for detail views */
+.netflix-detail {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1000px;
+    max-height: 80vh;
+    background: #141414;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    padding: 20px;
+    display: none; /* Hidden by default */
+}
+
+/* Blur background when detail view is active */
+body.detail-view-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+}
+
+/* Overlay for closing detail view */
+.detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;
+    cursor: pointer;
+}
+
+/* Close button for detail view */
+.detail-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(229, 9, 20, 0.8);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.detail-close-btn:hover {
+    background-color: #E50914;
+}
+
+/* Ensure detail content is properly styled */
+.netflix-detail .detail-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .netflix-detail .detail-content {
+        flex-direction: row;
+    }
+    
+    .netflix-detail .detail-poster {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+    
+    .netflix-detail .detail-info {
+        flex: 0 0 60%;
+        max-width: 60%;
+        padding-left: 20px;
+    }
+}
+
+/* When body has active detail */
+body.detail-view-active {
+    overflow: hidden;
+}
+
+.netflix-detail.expanded {
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Scrollbar styling for detail view */
+.netflix-detail::-webkit-scrollbar {
+    width: 8px;
+}
+
+.netflix-detail::-webkit-scrollbar-track {
+    background: #141414;
+}
+
+.netflix-detail::-webkit-scrollbar-thumb {
+    background: #E50914;
+    border-radius: 4px;
+}
+
+/* Netflix-style full-page detail view */
+.netflix-full-page-detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #141414;
+    z-index: 2000;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.netflix-full-page-detail.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.detail-header {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.8) 80%, rgba(20, 20, 20, 0) 100%);
+    z-index: 10;
+}
+
+.back-button {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: rgba(229, 9, 20, 0.8);
+}
+
+.netflix-full-page-detail .detail-content {
+    padding: 0 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .netflix-full-page-detail .detail-content {
+        flex-direction: row;
+        gap: 30px;
+        padding-top: 20px;
+    }
+    
+    .netflix-full-page-detail .detail-poster {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+    
+    .netflix-full-page-detail .detail-info {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+}
+
+.netflix-full-page-detail .detail-poster img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-full-page-detail .detail-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.netflix-full-page-detail .detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+.netflix-full-page-detail .detail-description {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.netflix-full-page-detail .detail-section {
+    margin-top: 30px;
+}
+
+.netflix-full-page-detail .detail-section-title {
+    color: #E50914;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Prevent scrolling on main content when detail is open */
+body.detail-page-open {
+    overflow: hidden;
+}
+
+/* Scrollbar styling for full-page detail */
+.netflix-full-page-detail::-webkit-scrollbar {
+    width: 8px;
+}
+
+.netflix-full-page-detail::-webkit-scrollbar-track {
+    background: #141414;
+}
+
+.netflix-full-page-detail::-webkit-scrollbar-thumb {
+    background: #E50914;
+    border-radius: 4px;
+}
+/* Skills section styling */
+#skills .netflix-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+#skills .netflix-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#skills .netflix-card.active {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
+    border: 2px solid #E50914;
+}
+
+#skills .netflix-card .netflix-card-content {
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#skills .netflix-card .netflix-card-title {
+    font-weight: bold;
+    color: #E50914;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#skills .netflix-card .skill-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+#skills .netflix-card.active .skill-list {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+#skills .netflix-card .skill-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#skills .netflix-card .skill-name {
+    flex: 1;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#skills .netflix-card .skill-level {
+    width: 100px;
+    height: 6px;
+    background-color: #333;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+#skills .netflix-card .skill-level-fill {
+    height: 100%;
+    background-color: #E50914;
+}
+
+/* Make skills slider not scroll horizontally on small screens */
+@media (max-width: 768px) {
+    #skills .netflix-slider-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        transform: none !important;
+    }
+    
+    #skills .netflix-card {
+        width: calc(100% - 20px);
+        margin: 10px;
+        flex: 0 0 auto;
+    }
+    
+    #skills .slider-nav {
+        display: none;
+    }
+}
+
+/* Contact Button */
+.contact-button {
+    background-color: #E50914;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Square Social Buttons */
+.social-buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: 15px;
+}
+
+.netflix-social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.netflix-social-button:hover {
+  background-color: #E50914;
+  border-color: #E50914;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+/* Make the billboard buttons display properly with the new social buttons */
+.billboard-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+@media (max-width: 576px) {
+  .billboard-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  
+  .social-buttons {
+      margin-left: 0;
+      margin-top: 10px;
+  }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #141414;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.4s;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: #E50914;
+    margin: 0;
+}
+
+.close-modal {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #E50914;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Contact Grid in Modal */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
+    border: 1px solid rgba(229, 9, 20, 0.5);
+}
+
+.contact-card-content {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.contact-card-title {
+    font-weight: bold;
+    color: #E50914;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.contact-card-icon {
+    font-size: 2rem;
+    color: #E50914;
+    margin-bottom: 15px;
+}
+
+.contact-card-text {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.contact-card-text a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-card-text a:hover {
+    color: #E50914;
+}
+
+.contact-divider {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #E50914, transparent);
+    height: 100%;
+}
+
+/* Form Styles */
+.contact-form {
+    padding: 20px;
+}
+
+.form-title {
+    color: #E50914;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #E50914;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(30, 30, 30, 0.9);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #E50914;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.form-control::placeholder {
+    color: #666;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-divider {
+        display: none;
+    }
+    
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}

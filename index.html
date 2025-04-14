@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav Kowadkar | Netflix Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/netflix-style.css">
+    <link rel="stylesheet" href="./static/css/enhanced-ux.css">
+    <link rel="stylesheet" href="./static/css/chatbot.css">
+</head>
+<body>
+    <!-- Netflix Logo Animation (Intro) -->
+    <div class="netflix-logo-animation">
+        <div class="netflix-logo-n">pk</div>
+    </div>
+    
+    <!-- Netflix Sound Effect -->
+    <audio id="netflix-intro-sound" src="./static/media/netflix-sound.mp3" preload="auto"></audio>
+    
+    <!-- Header -->
+    <header class="netflix-header">
+        <div class="container header-container">
+            <a href="/" class="netflix-logo">PRANAV</a>
+            <nav class="netflix-nav">
+                <ul class="netflix-nav-list">
+                    <li class="netflix-nav-item">
+                        <a href="#about" class="netflix-nav-link">About</a>
+                    </li>
+                    <li class="netflix-nav-item">
+                        <a href="#experience" class="netflix-nav-link">Experience</a>
+                    </li>
+                    <li class="netflix-nav-item">
+                        <a href="#education" class="netflix-nav-link">Education</a>
+                    </li>
+                    <li class="netflix-nav-item">
+                        <a href="#projects" class="netflix-nav-link">Projects</a>
+                    </li>
+                    <li class="netflix-nav-item">
+                        <a href="#skills" class="netflix-nav-link">Skills</a>
+                    </li>
+                    <li class="netflix-nav-item">
+                        <button id="contact-btn" class="contact-button">Let's Connect!!</button>
+                    </li>
+                </ul>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section (Billboard) -->
+    <section class="netflix-billboard" style="background-image: url('./static/images/hero-bg.png');">
+        <div class="billboard-content animate-on-scroll" data-animation="slide-up">
+            <h1 class="billboard-title">Pranav Shridhar Kowadkar</h1>
+            <h2 class="billboard-subtitle">Data Scientist / ML Engineer</h2>
+            <p class="billboard-description">
+                Specializing in machine learning, deep learning, and data engineering with expertise in Python, TensorFlow, and AWS cloud technologies.
+            </p>
+                <div class="billboard-buttons">
+                    <a href="#projects" class="netflix-button netflix-button-primary">
+                        <i class="fas fa-play"></i> View Projects
+                    </a>
+                    <div class="social-buttons">
+                        <a href="mailto:pk.kowadkar@gmail.com" class="netflix-social-button">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/pkowadkar" target="_blank" class="netflix-social-button">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/p-kowadkar" target="_blank" class="netflix-social-button">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="netflix-row">
+        <div class="container">
+            <div class="row-header">
+                <h2 class="row-title animate-on-scroll">About Me</h2>
+            </div>
+            <div class="about-body animate-on-scroll">
+                <p class="lead">
+                  I’m <strong>Pranav Shridhar Kowadkar</strong>&nbsp;— a data‑driven
+                  engineer who turns raw, high‑volume information into products that think,
+                  predict, and scale.
+                </p>
+          
+                <p>
+                  <strong>What I deliver:</strong><br>
+                  • <em>End‑to‑end machine‑learning systems</em> — from feature stores to low‑latency
+                  model serving.<br>
+                  • <em>Domain‑specific AI solutions</em> for healthcare, finance, aerospace,
+                  and media, always balancing accuracy with cost and compliance.<br>
+                  • <em>Intelligent coding workflows</em> — integrating LLMs, code analysis,
+                  and automated testing so teams ship faster without the “prompt spaghetti.”<br>
+                  • <em>Cloud‑native data pipelines</em> on AWS &amp; Spark that move
+                  terabytes daily and never miss an SLA.
+                </p>
+          
+                <p>
+                  I’ve fine‑tuned language models for neuroimaging at <strong>NJIT</strong>,
+                  architected Snowflake + Azure analytics for <strong>Bayer</strong>, and
+                  built CFD‑driven design tools at <strong>NAL</strong>. My real‑time
+                  recommender on AWS EMR serves <strong>50 ms</strong> responses over
+                  100 GB of fresh data every day.
+                </p>
+          
+                <p>
+                  <strong>Stack highlights:</strong> Python, PyTorch, Spark, Kafka, Airflow,
+                  AWS (EMR, ECS, S3), Terraform, Docker, LangChain, Pinecone, Redis.
+                </p>
+          
+                <p>
+                  Beyond code, I <em>teach</em> data science fundamentals, mentor with
+                  <strong>JerseySTEM</strong>, and contribute to open‑source ML‑ops
+                  libraries — proving that good engineering scales best when shared.
+                </p>
+          
+                <p class="cta">
+                  Need a partner who can design the pipeline, train the model, <em>and</em>
+                  explain it to the board? Let’s talk!!
+                </p>
+              </div>
+            <div class="netflix-detail">
+                <div class="detail-content animate-on-scroll" data-animation="fade-in">
+                    <div class="detail-poster">
+                        <img src="./static/images/profile.png" alt="Pranav Kowadkar">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Pranav Shridhar Kowadkar</h3>
+                        <div class="detail-meta">
+                            <span>Data Scientist</span>
+                            <span>ML Engineer</span>
+                            <span>Jersey City, NJ</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                I am a Data Scientist and Machine Learning Engineer with expertise in developing scalable machine learning solutions and data-driven applications. My background combines strong technical skills with a passion for solving complex problems through innovative approaches.
+                            </p>
+                            <p>
+                                Currently, I'm focused on fine-tuning language models for neuroimaging classification tasks and developing distributed recommendation engines that process large volumes of data with sub-second response times.
+                            </p>
+                            <!-- <p>
+                                I am authorized to work in the United States under F1 STEM OPT status and am actively seeking full-time opportunities in Data Science, Machine Learning, and Data Engineering roles.
+                            </p> -->
+                        </div>
+                        <div class="detail-buttons">
+                            <a href="#contact" class="netflix-button netflix-button-primary">
+                                <i class="fas fa-envelope"></i> Contact Me
+                            </a>
+                            <a href="https://linkedin.com/in/pkowadkar" target="_blank" class="netflix-button netflix-button-secondary">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="netflix-row">
+        <div class="container">
+            <div class="row-header">
+                <h2 class="row-title animate-on-scroll">Experience</h2>
+                <a href="#" class="see-all">See All</a>
+            </div>
+            <div class="netflix-slider">
+                <div class="netflix-slider-inner">
+                    <!-- Experience Card 1 -->
+                    <div class="netflix-card" data-detail-id="experience-1">
+                        <img src="./static/images/exp-njit.png" alt="NJIT">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Machine Learning Researcher</h3>
+                            <p class="netflix-card-info">NJIT • 2025-Present</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 2 -->
+                    <div class="netflix-card" data-detail-id="experience-2">
+                        <img src="./static/images/exp-vandoo.png" alt="Vandoo LLC">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Programmer Analyst</h3>
+                            <p class="netflix-card-info">Vandoo LLC • 2024-2025</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 3 -->
+                    <div class="netflix-card" data-detail-id="experience-3">
+                        <img src="./static/images/exp-jerseystem.png" alt="JerseySTEM">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Data Scientist</h3>
+                            <p class="netflix-card-info">JerseySTEM • 2024</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 4 -->
+                    <div class="netflix-card" data-detail-id="experience-4">
+                        <img src="./static/images/exp-bayer.png" alt="Bayer">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Data Engineer</h3>
+                            <p class="netflix-card-info">Bayer • 2023</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card 5 -->
+                    <div class="netflix-card" data-detail-id="experience-5">
+                        <img src="./static/images/exp-dassault.png" alt="Dassault Systems">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">R&D Software Engineer</h3>
+                            <p class="netflix-card-info">Dassault Systems • 2020-2022</p>
+                        </div>
+                    </div>
+
+                     <!-- Experience Card 6 -->
+                     <div class="netflix-card" data-detail-id="experience-6">
+                        <img src="./static/images/exp-nal.png" alt="National Aerospace Laboratories">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Project Assistant</h3>
+                            <p class="netflix-card-info">National Aerospace Laboratories • 2019 - 2020</p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 7 -->
+                    <div class="netflix-card" data-detail-id="experience-7">
+                        <img src="./static/images/exp-cognizant.png" alt="Cognizant Technology Solutions">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Programmer Analyst</h3>
+                            <p class="netflix-card-info">Cognizant Technology Solutions • 2018 - 2019</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Experience Detail Views (Hidden by default) -->
+            <!-- Experience Detail View 1: NJIT -->
+            <div id="experience-1" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-njit-large.png" alt="NJIT">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Machine Learning Researcher</h3>
+                        <div class="detail-meta">
+                            <span>New Jersey Institute of Technology</span>
+                            <span>March 2025 – Present</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Leading research on fine-tuning language models for neuroimaging classification tasks, with a focus on improving diagnostic accuracy for neurological disorders.
+                            </p>
+                            <ul>
+                                <li>Developed a novel approach to feature extraction from MRI scans using transformer architectures</li>
+                                <li>Implemented distributed training pipelines that reduced model training time by 60%</li>
+                                <li>Collaborated with neuroscience researchers to validate model outputs against clinical diagnoses</li>
+                                <li>Published findings in peer-reviewed journals and presented at international conferences</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, TensorFlow, PyTorch, AWS, Docker, CUDA, Git</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 2: Vandoo LLC -->
+            <div id="experience-2" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-vandoo-large.png" alt="Vandoo LLC">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Programmer Analyst</h3>
+                        <div class="detail-meta">
+                            <span>Vandoo LLC dba Vaandu</span>
+                            <span>Nov 2024 – Feb 2025</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Enhanced financial data processing and system performance through advanced scripting and database monitoring.
+                            </p>
+                            <ul>
+                                <li>Strengthened Oracle-driven data pipelines using PL/SQL and Unix scripting, boosting query speeds by 20%</li>
+                                <li>Implemented Prometheus metrics for database monitoring and built custom dashboards in Grafana</li>
+                                <li>Enhanced Python code quality with targeted refactoring for improved deployment stability</li>
+                                <li>Developed an observability framework for AWS Lambda functions, enabling proactive system troubleshooting</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, Oracle, PL/SQL, AWS, Grafana, Prometheus, Unix</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 3: JerseySTEM -->
+            <div id="experience-3" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-jerseystem-large.png" alt="JerseySTEM">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Data Scientist</h3>
+                        <div class="detail-meta">
+                            <span>JerseySTEM</span>
+                            <span>Feb 2024 – Nov 2024</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Improved data processing efficiency and analytics through advanced SQL, Python, and pipeline automation.
+                            </p>
+                            <ul>
+                                <li>Implemented advanced SQL queries and optimized Python data manipulation for processing over 1M data points</li>
+                                <li>Designed and deployed Airflow-based data pipelines on AWS EC2, reducing manual efforts by 40%</li>
+                                <li>Championed the adoption of Airflow by developing documentation and training sessions for team members</li>
+                                <li>Created interactive Looker Studio dashboards to drive data-informed strategic decisions</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, SQL, Airflow, AWS EC2, Looker Studio, Jira, Agile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 4: Bayer -->
+            <div id="experience-4" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-bayer-large.png" alt="Bayer">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Data Engineer</h3>
+                        <div class="detail-meta">
+                            <span>Bayer</span>
+                            <span>Sep 2023 – Dec 2023</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Developed robust data pipelines and dashboards to support targeted marketing efforts and real-time analytics.
+                            </p>
+                            <ul>
+                                <li>Architected Databricks pipelines using Spark and Python to process Snowflake healthcare data</li>
+                                <li>Developed PowerBI dashboards to visualize consumer behavior metrics, enhancing campaign efficiency</li>
+                                <li>Optimized ETL processes for real-time data ingestion using Azure Data Factory and Python</li>
+                                <li>Created automated data quality monitoring systems to ensure compliance with privacy regulations</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, Databricks, Spark, Snowflake, PowerBI, Azure Data Factory, ETL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 5: Dassault Systems -->
+            <div id="experience-5" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-dassault-large.png" alt="Dassault Systems">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">R&D Software Engineer</h3>
+                        <div class="detail-meta">
+                            <span>Dassault Systems</span>
+                            <span>Apr 2020 – July 2022</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Spearheaded the modernization of CAD/CAM applications and automated testing frameworks to enhance system performance.
+                            </p>
+                            <ul>
+                                <li>Fixed critical memory issues in CATIA applications using C/C++ and memory profiling tools</li>
+                                <li>Led the migration of CATIA applications to a Linux environment, reducing downtime by 40%</li>
+                                <li>Automated CADAM testing with Python, reducing execution time by over 87%</li>
+                                <li>Developed interactive dashboards for self-service reporting and team performance analytics</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>C, C++, Python, CATIA, Linux, Automation, Pandas, Matplotlib</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 6: National Aerospace Laboratories -->
+            <div id="experience-6" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-nal-large.png" alt="National Aerospace Laboratories">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Project Assistant</h3>
+                        <div class="detail-meta">
+                            <span>National Aerospace Laboratories</span>
+                            <span>Dec 2019 – Mar 2020</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Enhanced aerospace design and simulation processes through analytical modeling and automation.
+                            </p>
+                            <ul>
+                                <li>Boosted VTOL UAV design efficiency by 17% using CFD simulations and Python statistical analysis</li>
+                                <li>Developed interactive Tableau dashboards for real-time propulsion modeling</li>
+                                <li>Optimized propeller performance with CATIA V5 and 3D scan correlations</li>
+                                <li>Automated aerospace calculations with Python, reducing report generation time dramatically</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, NumPy, Pandas, Matplotlib, Seaborn, Tableau, CATIA V5, CFD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Detail View 7: Cognizant Technology Solutions -->
+            <div id="experience-7" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/exp-cognizant-large.png" alt="Cognizant Technology Solutions">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Programmer Analyst</h3>
+                        <div class="detail-meta">
+                            <span>Cognizant Technology Solutions</span>
+                            <span>Dec 2018 – Oct 2019</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Modernized legacy banking systems and optimized application performance for robust financial operations.
+                            </p>
+                            <ul>
+                                <li>Developed a C# transaction processing engine integrated with SQL Server, reducing manual reconciliation by 75%</li>
+                                <li>Optimized financial application performance using OOP principles and multithreading</li>
+                                <li>Redesigned SQL stored procedures and indexing strategies to cut query latency by 35%</li>
+                                <li>Implemented automated reporting solutions to transform raw data into actionable business intelligence</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>C#, .NET, SQL Server, OOP, Multithreading, Data Analysis, Business Intelligence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="netflix-row">
+        <div class="container">
+            <div class="row-header">
+                <h2 class="row-title animate-on-scroll">Education</h2>
+            </div>
+            <div class="netflix-slider">
+                <div class="netflix-slider-inner">
+                    <!-- Education Card 1 -->
+                    <div class="netflix-card" data-detail-id="education-1">
+                        <img src="./static/images/edu-njit.png" alt="NJIT">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">MS in Data Science</h3>
+                            <p class="netflix-card-info">NJIT • 2022-2023</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Card 2 -->
+                    <div class="netflix-card" data-detail-id="education-2">
+                        <img src="./static/images/edu-vtu.png" alt="VTU">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">BE in Mechanical Engineering</h3>
+                            <p class="netflix-card-info">VTU • 2014-2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="education-1" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/edu-njit-large.png" alt="NJIT">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Master of Science in Data Science</h3>
+                        <div class="detail-meta">
+                            <span>New Jersey Institute of Technology</span>
+                            <span>September 2022 – December 2023</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Completed a comprehensive program focused on advanced data science techniques, machine learning algorithms, and big data technologies.
+                            </p>
+                            <div class="detail-section">
+                                <h4 class="detail-section-title">Key Courses</h4>
+                                <ul>
+                                    <li>Advanced Machine Learning</li>
+                                    <li>Deep Learning</li>
+                                    <li>Natural Language Processing</li>
+                                    <li>Big Data Analytics</li>
+                                    <li>Statistical Data Analysis</li>
+                                    <li>Data Mining</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4 class="detail-section-title">Thesis</h4>
+                                <p>"Optimizing Distributed Recommendation Systems for Large-Scale Content Platforms"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="education-2" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/edu-vtu-large.png" alt="VTU">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Bachelor of Engineering in Mechanical Engineering</h3>
+                        <div class="detail-meta">
+                            <span>Visvesvaraya Technological University</span>
+                            <span>August 2016 – July 2020</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Developed a strong foundation in mechanical engineering principles while exploring interdisciplinary applications in aerodynamics and computational design.
+                            </p>
+                            <div class="detail-section">
+                                <h4 class="detail-section-title">Key Courses</h4>
+                                <ul>
+                                    <li>Finite Element Methods</li>
+                                    <li>Computational Fluid Dynamics</li>
+                                    <li>Thermodynamics</li>
+                                    <li>Mechanics of Materials</li>
+                                    <li>Engineering Design</li>
+                                    <li>Propulsion Systems</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4 class="detail-section-title">Capstone Project</h4>
+                                <p>"Design and Analysis of Multi-Blade Drone Propellers using CFD Simulations"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="netflix-row">
+        <div class="container">
+            <div class="row-header">
+                <h2 class="row-title animate-on-scroll">Projects</h2>
+                <a href="#" class="see-all">See All</a>
+            </div>
+            <div class="netflix-slider">
+                <div class="netflix-slider-inner">
+                    <!-- Project Card 1 -->
+                    <div class="netflix-card" data-detail-id="project-1">
+                        <img src="./static/images/project-recommendation.png" alt="Recommendation Engine">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Content Recommendation Engine</h3>
+                            <p class="netflix-card-info">ML • AWS • Spark</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 2 -->
+                    <div class="netflix-card" data-detail-id="project-2">
+                        <img src="./static/images/project-document.png" alt="Document Analysis">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Financial Document Analysis</h3>
+                            <p class="netflix-card-info">NLP • Deep Learning</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 3 -->
+                    <div class="netflix-card" data-detail-id="project-3">
+                        <img src="./static/images/project-wave.png" alt="Gravitational Wave">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Gravitational Wave Detection</h3>
+                            <p class="netflix-card-info">Signal Processing • ML</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 4 -->
+                    <div class="netflix-card" data-detail-id="project-4">
+                        <img src="./static/images/project-anime.png" alt="Anime Insights">
+                        <div class="netflix-card-overlay">
+                            <h3 class="netflix-card-title">Anime Insights Platform</h3>
+                            <p class="netflix-card-info">Data Viz • Web Dev</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Detail Views -->
+            <!-- Project 1: Scalable Real-time Content Recommendation Engine -->
+            <div id="project-1" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/project-recommendation-large.png" alt="Recommendation Engine">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Scalable Real-time Content Recommendation Engine</h3>
+                        <div class="detail-meta">
+                            <span>Machine Learning</span>
+                            <span>AWS</span>
+                            <span>Spark MLlib</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Developed a distributed recommendation engine using AWS EMR and Spark MLlib that processes over 100GB of data daily with sub-second response times.
+                            </p>
+                            <ul>
+                                <li>Implemented collaborative filtering and content-based recommendation algorithms</li>
+                                <li>Designed a real-time feature engineering pipeline using Kafka and Spark Streaming</li>
+                                <li>Optimized model serving with Redis caching to achieve 50ms average response time</li>
+                                <li>Deployed using containerized microservices architecture on AWS ECS</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, Spark, AWS (EMR, S3, ECS), Kafka, Redis, Docker, Terraform</p>
+                        </div>
+                        <!-- <div class="detail-buttons">
+                            <a href="https://github.com/p-kowadkar/recommendation-engine" target="_blank" class="netflix-button netflix-button-secondary">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2: Financial Document Analysis -->
+            <div id="project-2" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/project-document-large.png" alt="Financial Document Analysis">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">AI-powered Financial Document Analysis System</h3>
+                        <div class="detail-meta">
+                            <span>Deep Learning</span>
+                            <span>NLP</span>
+                            <span>LLMs</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Engineered a system to extract insights from unstructured financial PDFs using transformer-based language models fine-tuned on domain-specific data.
+                            </p>
+                            <ul>
+                                <li>Utilized OCR and PDF parsing to extract textual content from scanned financial statements</li>
+                                <li>Leveraged fine-tuned BERT and GPT-4 models to summarize and answer questions on earnings reports</li>
+                                <li>Built an RAG (Retrieval-Augmented Generation) pipeline with Pinecone vector search and LangChain</li>
+                                <li>Deployed system with fastAPI and integrated GPT-based feedback loops to improve accuracy</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, PyMuPDF, Hugging Face, Pinecone, LangChain, FastAPI, GPT-4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Gravitational Wave Detection -->
+            <div id="project-3" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/project-wave-large.png" alt="Gravitational Wave Detection">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Gravitational Wave Detection via Hybrid Deep Learning</h3>
+                        <div class="detail-meta">
+                            <span>Signal Processing</span>
+                            <span>Deep Learning</span>
+                            <span>Astrophysics</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Designed a hybrid CNN-RNN architecture to detect gravitational wave signals buried in noise using LIGO datasets.
+                            </p>
+                            <ul>
+                                <li>Preprocessed time-series data using Fourier transforms and filtering techniques</li>
+                                <li>Developed an EfficientNetB7 encoder coupled with a bi-directional GRU decoder for classification</li>
+                                <li>Achieved 86.84% accuracy with precision-focused evaluation on rare wave events</li>
+                                <li>Integrated model into a PyTorch training loop with early stopping and LR schedulers</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, PyTorch, NumPy, SciPy, Matplotlib, LIGO Dataset</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Anime Insights Platform -->
+            <div id="project-4" class="netflix-detail" style="display: none;">
+                <div class="detail-content">
+                    <div class="detail-poster">
+                        <img src="./static/images/project-anime-large.png" alt="Anime Insights">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title">Anime Insights and Recommendation Platform</h3>
+                        <div class="detail-meta">
+                            <span>Data Visualization</span>
+                            <span>Flask</span>
+                            <span>Recommendation</span>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                Built a full-stack web app delivering real-time anime recommendations and insights from MyAnimeList data.
+                            </p>
+                            <ul>
+                                <li>Scraped and processed 15,000+ anime titles for metadata, reviews, and ratings</li>
+                                <li>Built collaborative filtering system using cosine similarity and user embeddings</li>
+                                <li>Created D3.js visualizations for trends in genre, popularity, and ratings</li>
+                                <li>Integrated search and filter interface with Flask, HTML/CSS, and Bootstrap</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4 class="detail-section-title">Technologies Used</h4>
+                            <p>Python, Flask, Pandas, D3.js, BeautifulSoup, Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="netflix-row">
+        <div class="container">
+            <div class="row-header">
+                <h2 class="row-title animate-on-scroll">Skills</h2>
+            </div>
+            <div class="netflix-slider">
+                <div class="netflix-slider-inner">
+                    <!-- Programming Languages Card -->
+                    <div class="netflix-card" data-category="programming">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Programming Languages</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Python</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">R</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">SQL</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">JavaScript</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Java</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Machine Learning Card -->
+                    <div class="netflix-card" data-category="ml">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Machine Learning</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">TensorFlow</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">PyTorch</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Scikit-learn</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Deep Learning</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">NLP</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Science Card -->
+                    <div class="netflix-card" data-category="data-science">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Data Science</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Statistical Analysis</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Hypothesis Testing</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">A/B Testing</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Feature Engineering</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Time Series Analysis</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 83%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Visualization Card -->
+                    <div class="netflix-card" data-category="data-viz">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Data Visualization</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Tableau</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Power BI</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Looker Studio</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Matplotlib/Seaborn</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">D3.js</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Engineering Card -->
+                    <div class="netflix-card" data-category="data-engineering">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Data Engineering</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Spark</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Airflow</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Kafka</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">ETL Pipelines</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Data Warehousing</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Big Data Card -->
+                    <div class="netflix-card" data-category="big-data">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Big Data</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Hadoop</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Hive</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Databricks</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Distributed Computing</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Data Lakes</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cloud & DevOps Card -->
+                    <div class="netflix-card" data-category="cloud-devops">
+                        <div class="netflix-card-content">
+                            <h3 class="netflix-card-title">Cloud & DevOps</h3>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">AWS</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Docker</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Kubernetes</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">CI/CD</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Terraform</span>
+                                    <div class="skill-level">
+                                        <div class="skill-level-fill" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Get In Touch</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <!-- Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-title">Email</h3>
+                                <div class="contact-card-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <p class="contact-card-text">pk.kowadkar@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-title">Phone</h3>
+                                <div class="contact-card-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <p class="contact-card-text">+1 973-704-7623</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-title">Location</h3>
+                                <div class="contact-card-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p class="contact-card-text">Jersey City, NJ</p>
+                            </div>
+                        </div>
+                        
+                        <!-- LinkedIn Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-title">LinkedIn</h3>
+                                <div class="contact-card-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <p class="contact-card-text">
+                                    <a href="https://linkedin.com/in/pkowadkar" target="_blank">linkedin.com/in/pkowadkar</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- GitHub Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-title">GitHub</h3>
+                                <div class="contact-card-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <p class="contact-card-text">
+                                    <a href="https://github.com/p-kowadkar" target="_blank">github.com/p-kowadkar</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-divider"></div>
+                    
+                    <div class="contact-form">
+                        <h3 class="form-title">Send Me a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="netflix-button netflix-button-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="netflix-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Pranav Kowadkar</h3>
+                    <p>Data Scientist / ML Engineer</p>
+                    <p>Jersey City, NJ</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#experience">Experience</a></li>
+                        <li class="footer-link"><a href="#education">Education</a></li>
+                        <li class="footer-link"><a href="#projects">Projects</a></li>
+                        <li class="footer-link"><a href="#skills">Skills</a></li>
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/pkowadkar" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/p-kowadkar" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:pk.kowadkar@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pranav Shridhar Kowadkar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">Pranav's AI Assistant</div>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="Type your message...">
+                <button id="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./static/js/static-api.js"></script>
+    <!-- Scripts -->
+    <script src="./static/js/netflix-main.js"></script>
+    <script src="./static/js/netflix-portfolio.js"></script>
+    <script src="./static/js/enhanced-ux.js"></script>
+    <script src="./static/js/chatbot.js"></script>
+    <script src="./static/js/contact-form.js"></script>
+</body>
+</html>
