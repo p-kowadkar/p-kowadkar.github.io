@@ -638,7 +638,7 @@ button {
     color: #E50914;
     font-size: 7rem;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: none; /* Changed from uppercase to none */
     animation: netflix-logo-animation 4s ease forwards;
 }
 

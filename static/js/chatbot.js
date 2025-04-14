@@ -123,71 +123,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Process user message and generate response via Flask backend
-    // function processUserMessage(userMessage) {
-    //     // Show typing indicator
-    //     showTypingIndicator();
-        
-    //     // Call Flask backend API instead of directly calling DeepSeek
-    //     fetch('/api/deepseek', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             message: userMessage,
-    //             session_id: sessionId
-    //         }),
-    //     })
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         // Remove typing indicator
-    //         removeTypingIndicator();
-            
-    //         // Add bot response to chat
-    //         addMessageToChat('bot', data.message);
-            
-    //         // Add follow-up suggestions after certain responses
-    //         if (userMessage.toLowerCase().includes('experience') || 
-    //             userMessage.toLowerCase().includes('work') || 
-    //             userMessage.toLowerCase().includes('job')) {
-    //             addFollowUpSuggestions(['Tell me about projects', 'What skills does Pranav have?', 'Education details']);
-    //         } else if (userMessage.toLowerCase().includes('education') || 
-    //                   userMessage.toLowerCase().includes('study') || 
-    //                   userMessage.toLowerCase().includes('degree')) {
-    //             addFollowUpSuggestions(['Work experience', 'Technical skills', 'Contact information']);
-    //         }
-            
-    //         // Scroll to bottom of chat
-    //         scrollToBottom();
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-            
-    //         // Remove typing indicator
-    //         removeTypingIndicator();
-            
-    //         // Add error message to chat
-    //         addMessageToChat('bot', "I'm having trouble connecting to my brain right now. Please try again later or visit the <a href='contact.html'>Contact page</a> to reach out directly.");
-            
-    //         // Scroll to bottom of chat
-    //         scrollToBottom();
-    //     });
-    // }
     function processUserMessage(userMessage) {
-        // Show typing indicator
         showTypingIndicator();
     
-        // Call Flask backend API
-        fetch('/api/chat', {
+        // Enhanced API URL detection
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000/api/chat'
+            : 'https://p-kowadkar.github.io/api/chat';  // Use full GitHub Pages URL
+    
+        fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
+            credentials: 'include',  // Important for CORS with credentials
             body: JSON.stringify({
                 message: userMessage,
                 session_id: sessionId
@@ -195,7 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                // More detailed error handling
+                if (response.status === 404) {
+                    throw new Error('API endpoint not found (404)');
+                } else if (response.status === 500) {
+                    throw new Error('Server error (500)');
+                }
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
@@ -203,40 +159,52 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remove typing indicator
             removeTypingIndicator();
     
-            // Check if there's an error in the response
+            // Handle error responses more specifically
             if (data.error) {
-                addMessageToChat('bot', data.message);
+                const errorMessage = data.message || 'Sorry, I encountered an error. Please try again.';
+                addMessageToChat('bot', errorMessage);
+                
+                // Add retry suggestion
+                addFollowUpSuggestions(['Try again', 'Ask something else']);
             } else {
-                // Add bot response to chat
                 addMessageToChat('bot', data.message);
+                
+                // Add contextual suggestions
+                addContextualSuggestions(data.message);
             }
-    
-            // Add follow-up suggestions after certain responses
-            if (userMessage.toLowerCase().includes('experience') || 
-                userMessage.toLowerCase().includes('work') || 
-                userMessage.toLowerCase().includes('job')) {
-                addFollowUpSuggestions(['Tell me about projects', 'What skills does Pranav have?', 'Education details']);
-            } else if (userMessage.toLowerCase().includes('education') || 
-                      userMessage.toLowerCase().includes('study') || 
-                      userMessage.toLowerCase().includes('degree')) {
-                addFollowUpSuggestions(['Work experience', 'Technical skills', 'Contact information']);
-            }
-    
-            // Scroll to bottom of chat
             scrollToBottom();
         })
         .catch(error => {
-            console.error('Error:', error);
-    
-            // Remove typing indicator
+            console.error('API Connection Error:', error);
             removeTypingIndicator();
-    
-            // Add error message to chat
-            addMessageToChat('bot', "I'm having trouble connecting to my brain right now. Please try again later or visit the <a href='contact.html'>Contact page</a> to reach out directly.");
-    
-            // Scroll to bottom of chat
+            addMessageToChat('bot', `Connection failed. Details: ${error.message}`);
             scrollToBottom();
+            
+            // Debugging help
+            console.log('Attempted API URL:', apiUrl);
+            console.log('Request Payload:', {
+                message: userMessage,
+                session_id: sessionId
+            });
         });
+    }
+
+    // New function to handle contextual suggestions
+    function addContextualSuggestions(responseText) {
+        const suggestionsMap = {
+            experience: ['Projects', 'Skills', 'Education'],
+            skills: ['Projects', 'Experience', 'Certifications'],
+            education: ['Work Experience', 'Technical Skills', 'Contact'],
+            projects: ['Technologies Used', 'Demo Links', 'Challenges']
+        };
+
+        const key = Object.keys(suggestionsMap).find(k => 
+            responseText.toLowerCase().includes(k)
+        );
+        
+        if (key) {
+            addFollowUpSuggestions(suggestionsMap[key]);
+        }
     }
     
     // Add follow-up suggestion chips
