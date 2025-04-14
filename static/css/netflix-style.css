@@ -212,6 +212,46 @@ button {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  image-rendering: -webkit-optimize-contrast; /* Improves image sharpness in Chrome */
+  image-rendering: crisp-edges; /* Improves image sharpness in Firefox */
+  max-width: none; /* Prevents image from being constrained */
+}
+
+/* Ensure the container has proper dimensions */
+.profile-image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.profile-image-elliptical-fade {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.profile-image-elliptical-fade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(20, 20, 20, 0.95) 0%,
+    rgba(20, 20, 20, 0.8) 30%,
+    rgba(20, 20, 20, 0.4) 60%,
+    rgba(20, 20, 20, 0.1) 80%,
+    rgba(20, 20, 20, 0) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 .profile-image-container:hover .profile-image {
