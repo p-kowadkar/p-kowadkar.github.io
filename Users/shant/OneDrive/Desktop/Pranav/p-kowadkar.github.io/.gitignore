@@ -1,0 +1,7 @@
+deployment_instructions.md
+.env
+.env.local
+# Don't ignore image files
+!static/images/*.png
+!static/images/*.jpg
+!static/images/*.jpeg
