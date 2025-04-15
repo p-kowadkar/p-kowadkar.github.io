@@ -209,6 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Netflix-style volume control for intro sound
     const createVolumeControl = function() {
+        // Comment out or remove this entire function to disable the volume control
+        /*
         const introSound = document.getElementById('netflix-intro-sound');
         if (introSound) {
             const volumeControl = document.createElement('div');
@@ -233,10 +235,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 volumeControl.classList.add('fade-out');
             }, 5000);
         }
+        */
     };
     
     // Create volume control
-    createVolumeControl();
+    // Comment out this line to prevent the volume control from being created
+    // createVolumeControl();
     
     // Add CSS for enhanced UX elements
     const addEnhancedStyles = function() {
