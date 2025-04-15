@@ -832,55 +832,42 @@ body.content-visible > *:not(.netflix-logo-animation) {
 }
 
 /* Skills Section Styling */
-.skills-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.netflix-card-content {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(30, 30, 30, 0.9);
 }
 
-.skill-category {
-    margin-bottom: 2rem;
-}
-
-.skill-category-title {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--netflix-light-gray);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .skill-name {
-    font-weight: 500;
-    font-size: 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: normal;
 }
 
 .skill-level {
-    height: 6px;
-    background-color: var(--netflix-medium-gray);
-    border-radius: 3px;
-    overflow: hidden;
+  height: 6px;
+  background-color: var(--netflix-medium-gray);
+  border-radius: 3px;
+  overflow: hidden;
 }
 
-.skill-bar {
-    height: 100%;
-    background-color: var(--netflix-red);
-    border-radius: 3px;
-}
-
-/* Responsive adjustments for skills */
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
+.skill-level-fill {
+  height: 100%;
+  background-color: var(--netflix-red);
+  border-radius: 3px;
 }
