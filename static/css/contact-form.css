@@ -102,6 +102,31 @@
     margin-top: 10px;
 }
 
+/* Form message styles for success/error notifications */
+.form-message {
+    padding: 12px 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: opacity 0.5s;
+}
+
+.form-message.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4cc9f0;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.form-message.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f43f5e;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.form-message.fade-out {
+    opacity: 0;
+}
+
 /* Animation for form submission */
 @keyframes formSubmit {
     0% { transform: translateY(0); }

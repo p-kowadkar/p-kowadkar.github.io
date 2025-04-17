@@ -28,70 +28,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Form submission using EmailJS
+    // Form submission handling for FormSubmit
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Don't prevent default - let the form submit naturally to FormSubmit
             
-            // Show loading state on the button
+            // Show loading state
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitButton.disabled = true;
             
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Send email using EmailJS - replace with your actual service ID and template ID
-            emailjs.send('service_sqsvze5', 'template_ojrvbu1', {
-                from_name: name,
-                reply_to: email,
-                subject: subject,
-                message: message
-            })
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                showFormMessage('success', 'Message sent successfully! I\'ll get back to you soon.');
-                contactForm.reset();
-            })
-            .catch(function(error) {
-                console.log('FAILED...', error);
-                showFormMessage('error', 'Oops! There was a problem sending your message. Please try again.');
-            })
-            .finally(function() {
-                // Reset button state
+            // Reset button after form submission (in case the page doesn't redirect)
+            setTimeout(function() {
                 submitButton.innerHTML = originalButtonText;
                 submitButton.disabled = false;
-            });
+            }, 3000);
+            
+            // We'll let FormSubmit handle the actual submission
         });
-    }
-    
-    function showFormMessage(type, message) {
-        // Remove any existing message
-        const existingMessage = document.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-        
-        // Create new message element
-        const messageElement = document.createElement('div');
-        messageElement.className = `form-message ${type}`;
-        messageElement.textContent = message;
-        
-        // Insert message after form
-        contactForm.insertAdjacentElement('afterend', messageElement);
-        
-        // Auto remove message after 5 seconds
-        setTimeout(() => {
-            messageElement.classList.add('fade-out');
-            setTimeout(() => {
-                messageElement.remove();
-            }, 500);
-        }, 5000);
     }
 });
