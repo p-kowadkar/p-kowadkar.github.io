@@ -33,21 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            // Don't prevent default - let the form submit naturally to FormSubmit
+            // IMPORTANT: Do NOT prevent default for FormSubmit to work
+            // e.preventDefault(); - This line was preventing the form from submitting
             
             // Show loading state
             const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitButton.disabled = true;
             
-            // Reset button after form submission (in case the page doesn't redirect)
-            setTimeout(function() {
-                submitButton.innerHTML = originalButtonText;
-                submitButton.disabled = false;
-            }, 3000);
-            
-            // We'll let FormSubmit handle the actual submission
+            // FormSubmit will handle the actual submission and redirect
+            // No need to reset the form or button as the page will redirect
         });
     }
 });
