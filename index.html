@@ -9,6 +9,96 @@
     <link rel="stylesheet" href="./static/css/enhanced-ux.css">
     <link rel="stylesheet" href="./static/css/chatbot.css">
     <link rel="stylesheet" href="./static/css/contact-form.css">
+
+    <style>
+        /* Improved text formatting and paragraph styling */
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-description p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .detail-description ul {
+            margin-top: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .detail-description li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .detail-section {
+            margin-top: 1.5rem;
+        }
+        
+        .detail-section-title {
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .netflix-card-title {
+            font-weight: 600;
+        }
+        
+        .netflix-card-info {
+            line-height: 1.4;
+        }
+        
+        /* Improve readability in modal content */
+        .modal-body {
+            line-height: 1.6;
+        }
+        
+        .contact-card-text {
+            line-height: 1.5;
+        }
+        
+        /* Improve form label clarity */
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+
+        .netflix-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .netflix-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 100%);
+            color: white;
+            padding: 15px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .netflix-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .netflix-card-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* On hover, we can still enhance the card for better interaction */
+        .netflix-card:hover .netflix-card-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0.6) 100%);
+            transform: translateY(-5px);
+        }
+
+    </style>
+
 </head>
 <body>
     <!-- Netflix Logo Animation (Intro) -->
@@ -1040,7 +1130,9 @@
                                 <div class="contact-card-icon">
                                     <i class="fas fa-envelope"></i>
                                 </div>
-                                <p class="contact-card-text">pk.kowadkar@gmail.com</p>
+                                <p class="contact-card-text">
+                                    <a href="mailto:pk.kowadkar@gmail.com">pk.kowadkar@gmail.com</a>
+                                </p>
                             </div>
                         </div>
                         
@@ -1098,14 +1190,7 @@
                     <!-- Contact Form -->
                     <div class="contact-form">
                         <h3 class="form-title">Send Me a Message</h3>
-                        <form id="contactForm" action="https://formsubmit.co/pk.kowadkar@gmail.com" method="POST">
-                            <!-- FormSubmit.co configuration -->
-                            <input type="hidden" name="_subject" value="New Portfolio Contact!">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://p-kowadkar.github.io/thank-you.html">
-                            <input type="hidden" name="_autoresponse" value="Thank you for contacting me! I'll get back to you within 24-48 hours. - Pranav">
-                            
+                        <form id="contactForm">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" name="name" required>
@@ -1139,6 +1224,7 @@
                     <h3 class="footer-title">Pranav Kowadkar</h3>
                     <p>Data Scientist / ML Engineer</p>
                     <p>Jersey City, NJ</p>
+                    <p><a href="mailto:pk.kowadkar@gmail.com">pk.kowadkar@gmail.com</a></p>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">Quick Links</h3>
@@ -1200,6 +1286,7 @@
     <script src="./static/js/netflix-portfolio.js"></script>
     <script src="./static/js/enhanced-ux.js"></script>
     <script src="./static/js/chatbot.js"></script>
-    <script src="./static/js/contact-form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./static/js/emailjs-contact-form.js"></script>
 </body>
 </html>
