@@ -4,18 +4,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get the logo animation element and audio element
     const logoAnimation = document.querySelector('.netflix-logo-animation');
-    const introSound = document.getElementById('netflix-intro-sound');
+    // const introSound = document.getElementById('netflix-intro-sound');
     
     // Show the animation
     logoAnimation.classList.add('active');
     
     // Add a small delay before playing the sound to sync with animation
-    setTimeout(function() {
-        // Play the sound (this will only work after user interaction)
-        introSound.play().catch(error => {
-            console.log('Audio playback was prevented:', error);
-        });
-    }, 300); // Small delay to sync with animation start
+    // setTimeout(function() {
+    //     // Play the sound (this will only work after user interaction)
+    //     introSound.play().catch(error => {
+    //         console.log('Audio playback was prevented:', error);
+    //     });
+    // }, 300); // Small delay to sync with animation start
     
     // Hide animation and show content after animation completes
     setTimeout(function() {
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 4000); // Match this to your animation duration
     
     // Add a click event to the document to enable sound on first user interaction
-    document.addEventListener('click', function() {
-        introSound.play().catch(e => console.log('Audio play error:', e));
-    }, { once: true }); // This ensures it only triggers once
+    // document.addEventListener('click', function() {
+    //     introSound.play().catch(e => console.log('Audio play error:', e));
+    // }, { once: true }); // This ensures it only triggers once
 });
 
 // Header scroll effect
