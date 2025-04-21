@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+<<<<<<< HEAD
+    // Remove EmailJS form submission logic!
+    // The form will now submit natively to Formsubmit.co
+=======
     // Form submission handling for FormSubmit
     const contactForm = document.getElementById('contactForm');
     
@@ -45,4 +49,5 @@ document.addEventListener('DOMContentLoaded', function() {
             // No need to reset the form or button as the page will redirect
         });
     }
+>>>>>>> 6d0cb4a8730a2a7d710a3ad06d5143bd9225c53b
 });
