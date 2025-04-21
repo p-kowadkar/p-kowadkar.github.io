@@ -413,10 +413,9 @@ button {
   transition: transform 0.5s ease;
 }
 
-/* Netflix Card Improvements */
+/* Netflix Card Improvements - Modified to show details below instead of overlay */
 .netflix-card {
   width: 340px;
-  height: 200px;
   margin-right: 1.5rem;
   border-radius: 6px;
   overflow: hidden;
@@ -425,55 +424,59 @@ button {
   cursor: pointer;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 .netflix-card:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
   z-index: 10;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
+.netflix-card-image-container {
+  overflow: hidden;
+  height: 200px;
+}
+
 .netflix-card img {
-  width: 140%;
-  height: 140%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(0.8) translateZ(0);
-  transform-origin: center;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  filter: brightness(1.05) contrast(1.08) saturate(1.05);
   transition: all 0.4s ease;
   image-rendering: high-quality;
 }
 
 .netflix-card:hover img {
-  transform: scale(0.85) translateZ(0);
+  transform: scale(1.1);
   filter: brightness(1.1) contrast(1.1) saturate(1.1);
 }
 
-/* Improve slider appearance */
-.netflix-slider {
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  margin: 0 -1rem;
-  padding: 1.5rem 1rem;
+/* Replace overlay with below-image details */
+.netflix-card-details {
+  padding: 1rem;
+  background-color: var(--netflix-dark-gray);
+  width: 100%;
 }
 
+.netflix-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+}
+
+.netflix-card-info {
+  font-size: 0.8rem;
+  color: var(--netflix-light-gray);
+  white-space: normal;
+}
+
+/* Hide the overlay */
 .netflix-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-  opacity: 0;
-  transition: var(--netflix-transition);
+  display: none;
 }
 
 .netflix-card:hover .netflix-card-overlay {
@@ -870,4 +873,19 @@ body.content-visible > *:not(.netflix-logo-animation) {
   height: 100%;
   background-color: var(--netflix-red);
   border-radius: 3px;
+}
+
+/* Make the row grab‑and‑drag aware */
+.netflix-slider {
+  cursor: grab;                   /* show the “grab” hand */
+  scroll-behavior: smooth;       /* smooth momentum scrolling */
+  scroll-snap-type: x mandatory; /* optional: snap each card into place */
+}
+.netflix-slider:active {
+  cursor: grabbing;
+}
+
+/* Snap each card to the start of the viewport */
+.netflix-slider-inner > * {
+  scroll-snap-align: start;
 }

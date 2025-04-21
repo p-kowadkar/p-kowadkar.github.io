@@ -102,6 +102,209 @@
     margin-top: 10px;
 }
 
+/* Contact form modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #141414;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #333;
+    width: 80%;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    animation: modalFadeIn 0.4s;
+    color: #fff;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #e50914;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #e50914;
+    font-size: 24px;
+}
+
+.modal-body {
+    padding: 20px 0;
+}
+
+/* Contact grid for modal layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 30px;
+}
+
+.contact-divider {
+    width: 1px;
+    background-color: #333;
+    height: 100%;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.contact-card {
+    background-color: rgba(30, 30, 30, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #e50914;
+}
+
+.contact-card-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #e50914;
+}
+
+.contact-card-text {
+    font-size: 1rem;
+}
+
+.contact-card-text a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-card-text a:hover {
+    color: #e50914;
+    text-decoration: underline;
+}
+
+.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #e50914;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ddd;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #e50914;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.25);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Animation for button icon */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spin {
+    animation: spin 1s infinite linear;
+}
+
+/* Form message styles for success/error notifications */
+.form-message {
+    padding: 12px 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: opacity 0.5s;
+}
+
+.form-message.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4cc9f0;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.form-message.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f43f5e;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.form-message.fade-out {
+    opacity: 0;
+}
+
 /* Animation for form submission */
 @keyframes formSubmit {
     0% { transform: translateY(0); }
@@ -117,5 +320,19 @@
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-divider {
+        display: none;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
     }
 }
