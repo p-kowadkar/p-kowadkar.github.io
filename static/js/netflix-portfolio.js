@@ -55,27 +55,25 @@ skillsCards.forEach(card => {
 });
 
 // Function to hide arrows when no overflow
-// function updateSliderArrows() {
-//     const sliders = document.querySelectorAll('.netflix-slider');
+function updateSliderArrows() {
+    const sliders = document.querySelectorAll('.netflix-slider');
     
-//     sliders.forEach(slider => {
-//         const sliderInner = slider.querySelector('.netflix-slider-inner');
-//         const prevArrow = slider.querySelector('.slider-arrow.prev');
-//         const nextArrow = slider.querySelector('.slider-arrow.next');
+    sliders.forEach(slider => {
+        const sliderInner = slider.querySelector('.netflix-slider-inner');
+        const prevArrow = slider.querySelector('.slider-arrow.prev');
+        const nextArrow = slider.querySelector('.slider-arrow.next');
     
-//         if (!prevArrow || !nextArrow) return;
+        if (!prevArrow || !nextArrow || !sliderInner) return;
     
-//         // Check if content overflows
-//         const hasOverflow = sliderInner.scrollWidth > sliderInner.clientWidth;
+        // Check if content overflows
+        const hasOverflow = sliderInner.scrollWidth > sliderInner.clientWidth;
     
-//         // Show/hide arrows based on overflow
-//         prevArrow.style.display = hasOverflow ? 'flex' : 'none';
-//         nextArrow.style.display = hasOverflow ? 'flex' : 'none';
-//     });
-// }
-// Run on page load
-updateSliderArrows();
-window.addEventListener('resize', updateSliderArrows);
+        // Show/hide arrows based on overflow
+        prevArrow.style.display = hasOverflow ? 'flex' : 'none';
+        nextArrow.style.display = hasOverflow ? 'flex' : 'none';
+    });
+}
 
-// Run on window resize
+// Run on page load and window resize
+document.addEventListener('DOMContentLoaded', updateSliderArrows);
 window.addEventListener('resize', updateSliderArrows);
