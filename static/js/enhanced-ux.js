@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Create scroll to top button
-    createScrollTopButton();
+    // createScrollTopButton();
     
     // Parallax effect for billboard section
     const billboard = document.querySelector('.netflix-billboard');
@@ -325,81 +325,54 @@ document.addEventListener('DOMContentLoaded', function() {
     addEnhancedStyles();
 });
 
-// Add slider navigation controls to Netflix sliders
+// Add freely glidable horizontal slider for .netflix-slider-inner
+function makeSliderGlidable(sliderSelector) {
+    document.querySelectorAll(sliderSelector).forEach(sliderInner => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        sliderInner.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderInner.classList.add('active');
+            startX = e.pageX - sliderInner.offsetLeft;
+            scrollLeft = sliderInner.scrollLeft;
+        });
+        sliderInner.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderInner.classList.remove('active');
+        });
+        sliderInner.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderInner.classList.remove('active');
+        });
+        sliderInner.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderInner.offsetLeft;
+            const walk = (x - startX) * 2; // Adjust scroll speed
+            sliderInner.scrollLeft = scrollLeft - walk;
+        });
+        // Touch events for mobile
+        sliderInner.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - sliderInner.offsetLeft;
+            scrollLeft = sliderInner.scrollLeft;
+        });
+        sliderInner.addEventListener('touchend', () => {
+            isDown = false;
+        });
+        sliderInner.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - sliderInner.offsetLeft;
+            const walk = (x - startX) * 2;
+            sliderInner.scrollLeft = scrollLeft - walk;
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all slider containers
-    const sliders = document.querySelectorAll('.netflix-slider');
-    
-    sliders.forEach(slider => {
-        // Create navigation buttons
-        const prevButton = document.createElement('button');
-        prevButton.className = 'slider-nav slider-prev';
-        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        
-        const nextButton = document.createElement('button');
-        nextButton.className = 'slider-nav slider-next';
-        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
-        
-        // Add navigation buttons to slider
-        slider.appendChild(prevButton);
-        slider.appendChild(nextButton);
-        
-        // Get the slider inner element
-        const sliderInner = slider.querySelector('.netflix-slider-inner');
-        
-        // Set initial position
-        let position = 0;
-        
-        // Calculate how many cards to scroll based on viewport width
-        const getScrollAmount = () => {
-            const cardWidth = slider.querySelector('.netflix-card').offsetWidth;
-            const visibleWidth = slider.offsetWidth;
-            return Math.floor(visibleWidth / cardWidth) || 1;
-        };
-        
-        // Handle next button click
-        nextButton.addEventListener('click', () => {
-            const cards = slider.querySelectorAll('.netflix-card');
-            const scrollAmount = getScrollAmount();
-            
-            // Calculate max position
-            const maxPosition = Math.max(0, cards.length - scrollAmount);
-            
-            // Update position
-            position = Math.min(position + scrollAmount, maxPosition);
-            
-            // Scroll to new position
-            const cardWidth = cards[0].offsetWidth;
-            const scrollOffset = position * cardWidth;
-            sliderInner.style.transform = `translateX(-${scrollOffset}px)`;
-        });
-        
-        // Handle previous button click
-        prevButton.addEventListener('click', () => {
-            const scrollAmount = getScrollAmount();
-            
-            // Update position
-            position = Math.max(position - scrollAmount, 0);
-            
-            // Scroll to new position
-            const cardWidth = slider.querySelector('.netflix-card').offsetWidth;
-            const scrollOffset = position * cardWidth;
-            sliderInner.style.transform = `translateX(-${scrollOffset}px)`;
-        });
-        
-        // Update on window resize
-        window.addEventListener('resize', () => {
-            // Reset position on resize
-            position = 0;
-            sliderInner.style.transform = 'translateX(0)';
-        });
-    });
-    
-    // Remove "See All" links since we're using slider navigation
-    const seeAllLinks = document.querySelectorAll('.see-all');
-    seeAllLinks.forEach(link => {
-        link.style.display = 'none';
-    });
+    makeSliderGlidable('.netflix-slider-inner');
 });
 
 // Card expansion functionality
