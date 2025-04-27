@@ -99,8 +99,8 @@ button {
   font-size: 2rem;
   font-weight: 900;
   color: var(--netflix-red);
-  text-transform: uppercase;
   letter-spacing: -1px;
+  font-style: italic;
 }
 
 .netflix-nav {
@@ -877,7 +877,7 @@ body.content-visible > *:not(.netflix-logo-animation) {
 
 /* Make the row grab‑and‑drag aware */
 .netflix-slider {
-  cursor: grab;                   /* show the “grab” hand */
+  cursor: grab;                   /* show the "grab" hand */
   scroll-behavior: smooth;       /* smooth momentum scrolling */
   scroll-snap-type: x mandatory; /* optional: snap each card into place */
 }
@@ -888,4 +888,21 @@ body.content-visible > *:not(.netflix-logo-animation) {
 /* Snap each card to the start of the viewport */
 .netflix-slider-inner > * {
   scroll-snap-align: start;
+}
+
+/* Contact Button */
+.contact-button {
+  background-color: var(--netflix-red);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: var(--netflix-red-hover);
+  transform: scale(1.05);
+  color: white;
 }

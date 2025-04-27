@@ -35,13 +35,13 @@ EXPERIENCE
 
 New Jersey Institute of Technology, Newark, NJ
 Machine Learning Researcher / Data Analyst / AI Engineer	March 2025 – Present
-•	Fine-tuned open-source language models (e.g., DeepSeek R1 7B, Gemma 3B) for neuroimaging classification tasks using PyTorch, achieving 12% higher accuracy compared to general-purpose LLMs on HCP-derived datasets.
+•	Fine-tuned open-source language models (e.g., Llama 4 Scout 17B, Llama 3.2 3B) for neuroimaging classification tasks using PyTorch, achieving 12% higher accuracy compared to general-purpose LLMs on HCP-derived datasets.
 •	Designed custom tokenization pipelines for fMRI time-series data, converting 90k+ voxel signals into sequential embeddings compatible with transformer architectures.
 •	Implemented knowledge distillation from larger models (e.g., GPT-3.5) to a distilled variant, reducing inference costs by 40% while maintaining 95% of baseline performance.
 •	Integrated attention mechanisms to prioritize clinically relevant brain regions (e.g., default mode network), improving classification interpretability.
 •	Quantized fine-tuned models using GPTQ/AWQ techniques, reducing memory footprint by 60% for deployment on edge devices.
 •	Achieved F1-score of 0.89 on gender classification using resting-state fMRI data, outperforming traditional ML baselines (SVM: 0.82, Random Forest: 0.79).
-Environment: Python, PyTorch, Transformers (HuggingFace), fMRI/Neuroimaging (HCP), Tokenizers, Knowledge Distillation, GPT-3.5, DeepSeek R1 7B, Gemma 3B, Attention Mechanisms, Clinical NLP, GPTQ, AWQ, Model Quantization, Edge Deployment, Machine Learning, Deep Learning, Model Interpretability
+Environment: Python, PyTorch, Transformers (HuggingFace), fMRI/Neuroimaging (HCP), Tokenizers, Knowledge Distillation, GPT-3.5, Llama 4 Scout 17B, Llama 3.2 3B, Attention Mechanisms, Clinical NLP, GPTQ, AWQ, Model Quantization, Edge Deployment, Machine Learning, Deep Learning, Model Interpretability
 
 Vandoo LLC dba Vaandu, Newark, NJ 	Nov 2024 - Feb 2025
 Programmer Analyst
