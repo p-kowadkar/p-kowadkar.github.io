@@ -8,23 +8,207 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/chatbot.css">
     <meta name="description" content="Pranav Kowadkar's technical skills and competencies in data science, machine learning, programming, and more.">
-    <!-- <style>
-        /* Page title styling to match Education and Experience pages */
-        /* .page-title {
-            background-color: #141414;
-            padding: 2rem 0;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles from style.css might be here - keep them */
+        
+        /* --- Start: Soap Bubble Styles --- */
+        .skills-section {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+            padding: 0;
+        }
+
+        .skills-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(20, 20, 20, 0.8) 0%, rgba(0, 0, 0, 1) 100%);
+            z-index: 0;
+        }
+
+        #skill-tree-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
-        .page-title h1 {
-            font-size: 2rem;
+        .bubble {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .bubble text {
+            pointer-events: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            fill: #ffffff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        #skill-card {
+            position: absolute;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border-radius: 15px;
+            padding: 25px;
+            width: 320px;
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.4);
+            border: 1px solid rgba(229, 9, 20, 0.3);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        #skill-card.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+            animation: cardAppear 0.3s ease forwards;
+        }
+        
+        .card-content {
             color: #ffffff;
-            margin: 0;
-            font-weight: 600;
-        } */
-    </style> -->
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .skill-name {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #E50914;
+            text-align: center;
+            border-bottom: 1px solid rgba(229, 9, 20, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .skill-description {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            opacity: 0.9;
+            text-align: center;
+        }
+        
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .project-item {
+            background: rgba(229, 9, 20, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(229, 9, 20, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover {
+            background: rgba(229, 9, 20, 0.25);
+            transform: translateX(5px);
+            color: #fff;
+        }
+        
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #skill-card {
+                width: 90%;
+                max-width: 300px;
+                padding: 20px;
+            }
+            
+            .bubble text {
+                font-size: 12px;
+            }
+             .skill-name {
+                 font-size: 22px;
+             }
+             .skill-description {
+                 font-size: 14px;
+             }
+        }
+        /* --- End: Soap Bubble Styles --- */
+
+        /* Footer bottom styles for alignment */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between; /* Pushes items to ends */
+            align-items: center;
+            padding: 1rem 0; /* Add some padding */
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional separator */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 1rem; /* Add gap for wrapped items */
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem; /* Space between icons */
+        }
+        
+        .social-icon i {
+            font-size: 1.4rem; /* Adjust icon size if needed */
+            transition: color 0.3s ease, transform 0.1s ease; /* Added transform transition */
+            display: block; /* Ensure icon behaves like a block */
+            pointer-events: auto; /* Ensure clicks are registered on the icon */
+        }
+
+        .social-icon:hover i {
+             color: #E50914; /* Netflix red hover */
+        }
+        
+        /* Add active state for click feedback */
+        .social-icon:active i {
+            transform: scale(0.9); /* Slightly shrink icon on click */
+            color: #b70710; /* Darker red on click */
+        }
+
+        .footer-bottom p {
+            margin: 0; /* Remove default margin */
+            font-size: 0.9rem;
+            color: #ffffff; /* Changed to white */
+        }
+
+        /* Responsive footer */
+        @media (max-width: 768px) {
+             .footer-bottom {
+                justify-content: center; /* Center items when wrapped */
+                text-align: center;
+             }
+        }
+
+    </style>
     
 </head>
 <body>
@@ -40,381 +224,34 @@
                     <li class="nav-item"><a href="skills.html" class="nav-link active">Skills</a></li>
                     <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
                 </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
-            <button class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <main>
-        <section class="page-title">
-            <div class="container">
-                <h1>My Skills</h1>
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>My Skills</h1>
+        </div>
+    </section>
+
+    <!-- Skills Section - Replaced with Bubbles -->
+    <section class="skills-section" id="skills">
+        <!-- Container for D3 SVG -->
+        <div id="skill-tree-container"></div>
+        
+        <!-- Hidden card for displaying skill details -->
+        <div id="skill-card" class="">
+            <div class="card-content">
+                <h2 class="skill-name"></h2>
+                <p class="skill-description"></p>
+                <div class="projects-list"></div>
             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="skills" style="padding-top: 8rem;">
-            <div class="container">
-                <h2 class="section-title animate-on-scroll">Technical Skills</h2>
-                
-                <div class="skills-container">
-                    <!-- Programming Languages -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Programming Languages</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Python</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 95%"></div>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">R</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SQL</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Java</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">C/C++</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 70%"></div>
-                                    <span class="skill-percentage">70%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Machine Learning -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Machine Learning</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">TensorFlow</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">PyTorch</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Scikit-learn</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 95%"></div>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Deep Learning</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 88%"></div>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">NLP</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 82%"></div>
-                                    <span class="skill-percentage">82%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Computer Vision</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Science -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Data Science</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Statistical Analysis</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 92%"></div>
-                                    <span class="skill-percentage">92%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Hypothesis Testing</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 88%"></div>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">A/B Testing</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Feature Engineering</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Time Series Analysis</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 83%"></div>
-                                    <span class="skill-percentage">83%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Engineering -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Data Engineering</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Spark</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Airflow</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Kafka</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">ETL Pipelines</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Data Warehousing</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Visualization -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Data Visualization</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Tableau</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 92%"></div>
-                                    <span class="skill-percentage">92%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Power BI</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 88%"></div>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Looker Studio</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Matplotlib/Seaborn</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 95%"></div>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">D3.js</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cloud & DevOps -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Cloud & DevOps</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">AWS</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Azure</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Docker</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Kubernetes</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 70%"></div>
-                                    <span class="skill-percentage">70%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">CI/CD</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Big Data -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Big Data</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Hadoop</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Databricks</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Snowflake</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 78%"></div>
-                                    <span class="skill-percentage">78%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">MongoDB</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 82%"></div>
-                                    <span class="skill-percentage">82%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Cassandra</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 70%"></div>
-                                    <span class="skill-percentage">70%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Web Development -->
-                    <div class="skill-category animate-on-scroll">
-                        <h3>Web Development</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">HTML/CSS</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 90%"></div>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">React</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 75%"></div>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Flask</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 85%"></div>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">FastAPI</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 80%"></div>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">RESTful APIs</span>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: 88%"></div>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -441,18 +278,14 @@
         </div>
         <div class="chatbot-container">
             <div class="chatbot-header">
-                <div class="chatbot-title">Chat with Pranav's AI Assistant</div>
+                <div class="chatbot-title">Pranav's AI Assistant</div>
                 <button class="chatbot-close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="chatbot-messages">
-                <div class="message message-bot">
-                    Hi there! I'm Pranav's AI assistant. How can I help you today?
-                </div>
-            </div>
+            <div class="chatbot-messages"></div>
             <div class="chatbot-input">
-                <input type="text" placeholder="Type your message here..." id="chatbot-input-field">
+                <input type="text" id="chatbot-input-field" placeholder="Type your message...">
                 <button id="chatbot-send-btn">
                     <i class="fas fa-paper-plane"></i>
                 </button>
@@ -460,38 +293,393 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="./static/js/main.js"></script>
+    <!-- Existing Scripts (if any) -->
+    <script src="./static/js/main.js"></script> 
     
-    <!-- Netflix JS -->
-    <script src="./static/js/netflix-main.js"></script>
-    <script src="./static/js/enhanced-ux.js"></script>
-    
-    <!-- Chatbot JS -->
-    <script src="./static/js/chatbot.js"></script>
-    
-    <!-- Animate on scroll script -->
+    <!-- Soap Bubble Skill Tree Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Skill data
+            const skillData = {
+                // Programming Languages
+                "Python": {
+                    description: "High-level, versatile language for data science, ML, and automation.",
+                    projects: ["Data Science", "Web Dev", "Automation"]
+                },
+                "R": {
+                    description: "Statistical computing and graphics for data analysis.",
+                    projects: ["Statistical Analysis", "Data Visualization", "Reporting"]
+                },
+                "SQL": {
+                    description: "Structured Query Language for databases and analytics.",
+                    projects: ["Data Pipelines", "Reporting", "Optimized Queries"]
+                },
+                "JavaScript": {
+                    description: "Web development, interactivity, and data visualization.",
+                    projects: ["D3.js", "Frontend", "APIs"]
+                },
+                "Java": {
+                    description: "Object-oriented programming for enterprise and backend systems.",
+                    projects: ["Backend Dev", "OOP", "APIs"]
+                },
+                // Machine Learning
+                "TensorFlow": {
+                    description: "Deep learning framework for neural networks and AI.",
+                    projects: ["Neural Networks", "Model Training", "Deployment"]
+                },
+                "PyTorch": {
+                    description: "Flexible deep learning library for research and production.",
+                    projects: ["Computer Vision", "NLP", "Custom Models"]
+                },
+                "Scikit-learn": {
+                    description: "Machine learning library for classical ML algorithms.",
+                    projects: ["Classification", "Regression", "Clustering"]
+                },
+                "Deep Learning": {
+                    description: "Building and training deep neural networks for complex tasks.",
+                    projects: ["CNNs", "RNNs", "Transfer Learning"]
+                },
+                "NLP": {
+                    description: "Natural Language Processing for text and language data.",
+                    projects: ["Text Mining", "Sentiment Analysis", "LLMs"]
+                },
+                // Data Science
+                "Statistical Analysis": {
+                    description: "Analyzing data using statistical methods and models.",
+                    projects: ["Hypothesis Testing", "Regression", "Inference"]
+                },
+                "Hypothesis Testing": {
+                    description: "Testing assumptions and drawing conclusions from data.",
+                    projects: ["A/B Testing", "Significance", "Confidence Intervals"]
+                },
+                "A/B Testing": {
+                    description: "Experimentation and comparison of variants for optimization.",
+                    projects: ["Product Experiments", "Conversion Rate", "User Testing"]
+                },
+                "Feature Engineering": {
+                    description: "Creating and selecting features for ML models.",
+                    projects: ["Feature Selection", "Encoding", "Scaling"]
+                },
+                "Time Series Analysis": {
+                    description: "Analyzing temporal data for trends and forecasting.",
+                    projects: ["Forecasting", "Seasonality", "ARIMA"]
+                },
+                // Data Visualization
+                "Tableau": {
+                    description: "Interactive dashboards and data visualization.",
+                    projects: ["Dashboards", "Storytelling", "Business Insights"]
+                },
+                "Power BI": {
+                    description: "Business analytics and visualization by Microsoft.",
+                    projects: ["Reports", "Dashboards", "Data Modeling"]
+                },
+                "Looker Studio": {
+                    description: "Google's platform for data visualization and reporting.",
+                    projects: ["Data Studio", "Custom Reports", "Visualization"]
+                },
+                "Matplotlib/Seaborn": {
+                    description: "Python libraries for static, animated, and interactive plots.",
+                    projects: ["Charts", "Statistical Plots", "EDA"]
+                },
+                "D3.js": {
+                    description: "JavaScript library for dynamic, interactive data visualizations.",
+                    projects: ["SVG Graphics", "Custom Charts", "Web Viz"]
+                },
+                // Data Engineering
+                "Spark": {
+                    description: "Big data processing and analytics engine.",
+                    projects: ["ETL", "Streaming", "ML Pipelines"]
+                },
+                "Airflow": {
+                    description: "Workflow automation and scheduling for data pipelines.",
+                    projects: ["DAGs", "ETL Orchestration", "Monitoring"]
+                },
+                "Kafka": {
+                    description: "Distributed streaming platform for real-time data.",
+                    projects: ["Event Streaming", "Data Integration", "Analytics"]
+                },
+                "ETL Pipelines": {
+                    description: "Extract, Transform, Load processes for data integration.",
+                    projects: ["Data Cleaning", "Transformation", "Loading"]
+                },
+                "Data Warehousing": {
+                    description: "Centralized storage for structured data analytics.",
+                    projects: ["Snowflake", "Redshift", "BigQuery"]
+                },
+                // Big Data
+                "Hadoop": {
+                    description: "Distributed storage and processing of large datasets.",
+                    projects: ["HDFS", "MapReduce", "Batch Processing"]
+                },
+                "Hive": {
+                    description: "Data warehouse software for querying and managing big data.",
+                    projects: ["SQL on Hadoop", "Data Analysis", "Reporting"]
+                },
+                "Databricks": {
+                    description: "Unified analytics platform for big data and AI.",
+                    projects: ["Collaborative Notebooks", "Delta Lake", "MLflow"]
+                },
+                "Distributed Computing": {
+                    description: "Parallel processing across multiple machines.",
+                    projects: ["Cluster Computing", "Scalability", "Performance"]
+                },
+                "Data Lakes": {
+                    description: "Storage repository for large amounts of raw data.",
+                    projects: ["S3", "Azure Data Lake", "Unstructured Data"]
+                },
+                // Cloud & DevOps
+                "AWS": {
+                    description: "Amazon Web Services for cloud computing and ML.",
+                    projects: ["EC2", "S3", "Lambda"]
+                },
+                "Docker": {
+                    description: "Containerization for consistent environments.",
+                    projects: ["Containers", "Microservices", "CI/CD"]
+                },
+                "Kubernetes": {
+                    description: "Container orchestration for automated deployment.",
+                    projects: ["Scaling", "Service Discovery", "DevOps"]
+                },
+                "CI/CD": {
+                    description: "Continuous Integration and Continuous Deployment.",
+                    projects: ["Automation", "Testing", "Deployment"]
+                },
+                "Terraform": {
+                    description: "Infrastructure as code for provisioning cloud resources.",
+                    projects: ["IaC", "Cloud Automation", "Resource Management"]
+                }
+            };
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
+            // --- D3 Visualization Setup --- 
+            const container = document.getElementById('skill-tree-container');
+            if (!container) {
+                console.error("Skill tree container not found!");
+                return;
+            }
+
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            const svg = d3.select("#skill-tree-container")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("viewBox", `0 0 ${width} ${height}`);
+
+            const defs = svg.append("defs");
+            
+            const bubbleGradient = defs.append("radialGradient")
+                .attr("id", "bubble-gradient")
+                .attr("cx", "50%").attr("cy", "50%").attr("r", "50%")
+                .attr("fx", "30%").attr("fy", "30%");
+
+            bubbleGradient.append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", "rgba(255, 255, 255, 0.3)");
+
+            bubbleGradient.append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", "rgba(229, 9, 20, 0.1)");
+
+            const skills = Object.entries(skillData).map(([name, data]) => ({
+                id: name.replace(/[^a-zA-Z0-9_-]/g, '-'), // Sanitize for valid selector
+                name,
+                ...data,
+                radius: Math.max(40, 25 + name.length * 2.5)
+            }));
+
+            const simulation = d3.forceSimulation(skills)
+                .force("center", d3.forceCenter(centerX, centerY).strength(0.05))
+                .force("collide", d3.forceCollide().radius(d => d.radius + 8).strength(0.7))
+                .force("charge", d3.forceManyBody().strength(15))
+                .alphaDecay(0.005)
+                .velocityDecay(0.2);
+
+            const bubbles = svg.selectAll(".bubble")
+                .data(skills, d => d.id)
+                .enter()
+                .append("g")
+                .attr("class", "bubble")
+                .attr("id", d => `bubble-${d.id}`)
+                .style("opacity", 0)
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+
+            bubbles.append("circle")
+                .attr("r", d => d.radius)
+                .attr("fill", "url(#bubble-gradient)")
+                .attr("stroke", "#E50914")
+                .attr("stroke-width", 2)
+                .attr("stroke-opacity", 0.4);
+                
+            bubbles.append("text")
+                .text(d => d.name)
+                .attr("text-anchor", "middle")
+                .attr("dy", ".3em")
+                .style("font-size", d => `${Math.max(10, d.radius / 3.5)}px`);
+
+            bubbles.transition()
+                .duration(800)
+                .delay((d, i) => i * 50)
+                .style("opacity", 1);
+
+            simulation.on("tick", () => {
+                bubbles.attr("transform", d => `translate(${d.x},${d.y})`);
+            });
+
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.1).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+                d3.select(this).raise().classed("active", true);
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                if (!d3.select(this).classed('clicked')) {
+                    d.fx = null;
+                    d.fy = null;
+                }
+                d3.select(this).classed("active", false);
+            }
+
+            bubbles.on("mouseover", function(event, d) {
+                 if (d3.select("#skill-card").classed('visible')) return;
+                 
+                 d3.select(this).raise();
+                 d3.select(this).select("circle")
+                    .transition().duration(200)
+                    .attr("stroke-opacity", 1)
+                    .attr("stroke-width", 3)
+                    .style("filter", "drop-shadow(0 0 8px rgba(229, 9, 20, 0.7))");
+                    
+                 d3.select(this)
+                    .transition().duration(200)
+                    .attr("transform", `translate(${d.x},${d.y}) scale(1.1)`); 
+            })
+            .on("mouseout", function(event, d) {
+                if (d3.select(this).classed('clicked')) return;
+
+                d3.select(this).select("circle")
+                    .transition().duration(200)
+                    .attr("stroke-opacity", 0.4)
+                    .attr("stroke-width", 2)
+                    .style("filter", "none");
+                    
+                d3.select(this)
+                    .transition().duration(200)
+                    .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+            });
+
+            bubbles.on("click", function(event, d) {
+                event.stopPropagation();
+                const bubbleElement = d3.select(this);
+                
+                if (bubbleElement.classed('clicked')) return;
+
+                d3.selectAll(".bubble.clicked").each(function(datum) {
+                    d3.select(this).classed('clicked', false);
+                    d3.select(this).transition().duration(300).style("opacity", 1);
+                    if (datum.fx && datum.fy) {
+                         datum.fx = null;
+                         datum.fy = null;
+                    } 
                 });
-            }, { threshold: 0.1 });
+                simulation.alphaTarget(0).restart();
+                
+                bubbleElement.classed('clicked', true);
+                
+                d.fx = d.x;
+                d.fy = d.y;
+
+                bubbleElement
+                    .transition()
+                    .duration(300)
+                    .style("opacity", 0)
+                    .attr("pointer-events", "none");
+
+                const card = d3.select("#skill-card");
+                const cardWidth = card.node().offsetWidth;
+                const cardHeight = card.node().offsetHeight;
+
+                let left = d.x;
+                let top = d.y;
+
+                if (left - cardWidth / 2 < 10) left = cardWidth / 2 + 10;
+                if (left + cardWidth / 2 > width - 10) left = width - cardWidth / 2 - 10;
+                
+                if (top - cardHeight / 2 < 10) top = cardHeight / 2 + 10;
+                if (top + cardHeight / 2 > height - 10) top = height - cardHeight / 2 - 10;
+                
+                card.style("left", `${left}px`)
+                    .style("top", `${top}px`)
+                    .classed("visible", true);
+
+                card.select(".skill-name").text(d.name);
+                card.select(".skill-description").text(d.description);
+                
+                const projectsList = card.select(".projects-list");
+                projectsList.html("");
+                d.projects.forEach(project => {
+                    projectsList.append("div")
+                        .attr("class", "project-item")
+                        .text(project);
+                });
+                
+                card.datum(d);
+            });
+
+            d3.select("body").on("click.cardClose", function(event) {
+                const card = d3.select("#skill-card");
+                const clickedBubbleData = card.datum();
+
+                // Check if click is outside the card and not on any bubble
+                if (card.classed('visible') && 
+                    !card.node().contains(event.target) && 
+                    !event.target.closest('.bubble')) { // Use DOM closest directly
+                    
+                    card.classed("visible", false).datum(null);
+                    
+                    if (clickedBubbleData) {
+                        const clickedBubble = d3.select(`#bubble-${clickedBubbleData.id}`);
+                        if (clickedBubble.node()) { // Check if bubble exists
+                            clickedBubble
+                               .classed('clicked', false)
+                               .attr("pointer-events", "auto")
+                               .transition()
+                               .duration(300)
+                               .style("opacity", 1);
+                            
+                            clickedBubbleData.fx = null;
+                            clickedBubbleData.fy = null;
+                            simulation.alphaTarget(0).restart();
+                        }
+                    }
+                }
+            });
             
-            animateElements.forEach(element => {
-                observer.observe(element);
+             window.addEventListener('resize', () => {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                
+                svg.attr("width", newWidth).attr("height", newHeight)
+                   .attr("viewBox", `0 0 ${newWidth} ${newHeight}`);
+                   
+                simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2))
+                          .alpha(0.3).restart();
             });
         });
     </script>
-</body>
-</html> 
-            });
-        });
-    </script>
+    <!-- Chatbot Script -->
+    <script src="./static/js/chatbot.js"></script>
 </body>
 </html> 
