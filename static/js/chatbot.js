@@ -18,7 +18,7 @@ Answer only using the provided information. NEVER mention resumes, records, or d
 Keep responses brief and to the point, under 500 characters unless explicitly asked for more detail. Focus on delivering accurate information clearly.`;
 
 // The API key is now stored securely on the backend. No key in frontend!
-const OPENAI_API_URL = 'http://127.0.0.1:8000/api/chat'; // Update to your deployed backend URL if needed
+const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat'; // Update to your deployed backend URL if needed
 const MODEL = 'gpt-4.1-nano'; // Upgraded to more advanced model
 const RESUME_URL = './static/Data/resume.txt';
 
