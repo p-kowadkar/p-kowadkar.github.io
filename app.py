@@ -1,3 +1,12 @@
+"""
+Flask Skill Tree Visualization App
+
+To run the app:
+1. Install dependencies: pip install -r requirements.txt
+2. Run the app: python app.py
+3. Open browser: http://localhost:5000/skills
+"""
+
 from flask import Flask, request, jsonify
 import os
 import openai

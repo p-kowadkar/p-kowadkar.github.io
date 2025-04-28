@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // const introSound = document.getElementById('netflix-intro-sound');
     
     // Show the animation
-    logoAnimation.classList.add('active');
+    if (logoAnimation) {
+        logoAnimation.classList.add('active');
+    }
     
     // Add a small delay before playing the sound to sync with animation
     // setTimeout(function() {
@@ -19,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hide animation and show content after animation completes
     setTimeout(function() {
-        logoAnimation.classList.remove('active');
+        if (logoAnimation) {
+            logoAnimation.classList.remove('active');
+        }
         document.body.classList.add('content-visible');
     }, 4000); // Match this to your animation duration
     
@@ -31,26 +35,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Header scroll effect
 const header = document.querySelector('.netflix-header');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+if (header) {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
 
 // Mobile menu toggle
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navList = document.querySelector('.netflix-nav-list');
 
-if (mobileToggle) {
+if (mobileToggle && navList) {
     mobileToggle.addEventListener('click', function() {
         navList.classList.toggle('active');
         const icon = mobileToggle.querySelector('i');
-        if (icon.classList.contains('fa-bars')) {
+        if (icon && icon.classList.contains('fa-bars')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
-        } else {
+        } else if (icon) {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
         }
@@ -61,9 +67,13 @@ if (mobileToggle) {
 document.addEventListener('click', function(event) {
     if (navList && navList.classList.contains('active') && !event.target.closest('.netflix-nav-list') && !event.target.closest('.mobile-toggle')) {
         navList.classList.remove('active');
-        const icon = mobileToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        if (mobileToggle) {
+            const icon = mobileToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
     }
 });
 

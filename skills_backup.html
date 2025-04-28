@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Pranav Kowadkar</title>
+    <!-- Empty favicon to override browser defaults -->
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Pranav Kowadkar's technical skills and competencies in data science, machine learning, programming, and more.">
+    <style>
+        /* Further reduce spacing in skills page */
+        .skill-category {
+            margin-bottom: 0.75rem !important;
+        }
+        .skill-item {
+            margin-bottom: 0.5rem !important;
+        }
+        .skills-container {
+            padding: 0.2rem 0 !important;
+        }
+        .section-title {
+            margin-bottom: 0.5rem !important;
+        }
+        h3 {
+            margin-bottom: 0.5rem !important;
+        }
+        .page-title {
+            margin-bottom: 0 !important;
+        }
+        .skill-list {
+            padding: 0.1rem 0 !important;
+        }
+        .skill-bar {
+            position: relative;
+            background: #222;
+            border-radius: 6px;
+            height: 1.5rem;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            background: #E50914;
+            height: 100%;
+            width: 0;
+            border-radius: 6px 0 0 6px;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding-left: 0.75rem;
+        }
+        .skill-bar-label {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-weight: 500;
+            z-index: 2;
+        }
+        .skill-bar-percentage {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-weight: 600;
+            z-index: 2;
+        }
+        footer {
+            padding: 0.5rem 0 !important;
+            margin-top: 0.5rem !important;
+        }
+        .footer-content {
+            padding: 0.2rem 0 !important;
+        }
+        .social-links {
+            margin-bottom: 0.2rem !important;
+        }
+        /* Skill Card Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 2rem 0;
+        }
+        .skill-card {
+            background: #181818 !important;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px #000a, 0 0 0 4px #E50914cc;
+            padding: 2rem 2rem 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 320px;
+            min-height: 220px;
+            position: relative;
+        }
+        .skill-card h3 {
+            color: #E50914;
+            margin-bottom: 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .skills-grid { gap: 1.2rem 0.5rem; }
+            .skill-card { min-width: 90vw; padding: 1rem; }
+        }
+        .skill-card, .skill-list, .skill-bar-label, .skill-bar-percentage {
+            color: #fff !important;
+        }
+        .skill-card h3 {
+            color: #E50914 !important;
+        }
+        .skill-card, .skill-card * {
+            color: #fff !important;
+        }
+        .skills-grid .skill-card, .skills-grid .skill-card *, .skills-grid .skill-list *, .skills-grid .skill-bar-label, .skills-grid .skill-bar-percentage {
+            color: #fff !important;
+        }
+        .skills-grid .skill-card {
+            background: #181818 !important;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><i>pk</i></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="education.html" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="skills.html" class="nav-link active">Skills</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <div class="container">
+                <h1>My Skills</h1>
+            </div>
+        </section>
+
+        <!-- Skills Bubble Cluster -->
+        <section class="skills">
+            <div class="container">
+                <div class="skills-grid">
+                    <!-- Programming Languages Card -->
+                    <div class="skill-card">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="95">
+                                <span class="skill-bar-label">Python</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">R</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">SQL</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">JavaScript</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">Java</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="70">
+                                <span class="skill-bar-label">C/C++</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Machine Learning Card -->
+                    <div class="skill-card">
+                        <h3>Machine Learning</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">TensorFlow</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">PyTorch</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="95">
+                                <span class="skill-bar-label">Scikit-learn</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="88">
+                                <span class="skill-bar-label">Deep Learning</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="82">
+                                <span class="skill-bar-label">NLP</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">82%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">Computer Vision</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Data Science Card -->
+                    <div class="skill-card">
+                        <h3>Data Science</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="92">
+                                <span class="skill-bar-label">Statistical Analysis</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="88">
+                                <span class="skill-bar-label">Hypothesis Testing</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">A/B Testing</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">Feature Engineering</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="83">
+                                <span class="skill-bar-label">Time Series Analysis</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">83%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Data Engineering Card -->
+                    <div class="skill-card">
+                        <h3>Data Engineering</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">Spark</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">Airflow</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">Kafka</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">ETL Pipelines</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">Data Warehousing</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Data Visualization Card -->
+                    <div class="skill-card">
+                        <h3>Data Visualization</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="92">
+                                <span class="skill-bar-label">Tableau</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="88">
+                                <span class="skill-bar-label">Power BI</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">Looker Studio</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="95">
+                                <span class="skill-bar-label">Matplotlib/Seaborn</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">D3.js</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cloud & DevOps Card -->
+                    <div class="skill-card">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">AWS</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">Azure</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">Docker</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="70">
+                                <span class="skill-bar-label">Kubernetes</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">70%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">CI/CD</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Big Data Card -->
+                    <div class="skill-card">
+                        <h3>Big Data</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">Hadoop</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">Databricks</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="78">
+                                <span class="skill-bar-label">Snowflake</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">78%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="82">
+                                <span class="skill-bar-label">MongoDB</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">82%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="70">
+                                <span class="skill-bar-label">Cassandra</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Web Development Card -->
+                    <div class="skill-card">
+                        <h3>Web Development</h3>
+                        <div class="skill-list">
+                            <div class="skill-bar" data-percentage="90">
+                                <span class="skill-bar-label">HTML/CSS</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="75">
+                                <span class="skill-bar-label">React</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="85">
+                                <span class="skill-bar-label">Flask</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="80">
+                                <span class="skill-bar-label">FastAPI</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar" data-percentage="88">
+                                <span class="skill-bar-label">RESTful APIs</span>
+                                <div class="skill-bar-fill"></div>
+                                <span class="skill-bar-percentage">88%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/pkowadkar" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/p-kowadkar" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:pk.kowadkar@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Pranav Kowadkar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">Chat with Pranav's AI Assistant</div>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message message-bot">
+                    Hi there! I'm Pranav's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message here..." id="chatbot-input-field">
+                <button id="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./static/js/main.js"></script>
+    
+    <!-- Netflix JS -->
+    <script src="./static/js/netflix-main.js"></script>
+    <script src="./static/js/enhanced-ux.js"></script>
+    
+    <!-- Chatbot JS -->
+    <script src="./static/js/chatbot.js"></script>
+    
+    <!-- Animate on scroll script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+    <!-- Animate skill bars on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-bar').forEach(function(bar) {
+                var fill = bar.querySelector('.skill-bar-fill');
+                var percent = bar.getAttribute('data-percentage');
+                if (bar.getBoundingClientRect().top < window.innerHeight - 100) {
+                    fill.style.width = percent + '%';
+                }
+            });
+        }
+        window.addEventListener('scroll', animateSkillBars);
+        animateSkillBars(); // Initial call
+    });
+    </script>
+</body>
+</html> 
