@@ -19,6 +19,18 @@
             margin-bottom: 1rem;
         }
         
+        /* Drop-in Animation for text elements */
+        .section-title, .lead, .cta, p { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+        } 
+        
+        .fade-in { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
         .detail-description p {
             margin-bottom: 1.2rem;
         }
@@ -1368,5 +1380,20 @@ CONTACT SECTION END
     <script src="./static/js/chatbot.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="./static/js/emailjs-contact-form.js"></script>
+    
+    <!-- JavaScript to Trigger Animation -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.section-title, .lead, .cta, p').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
