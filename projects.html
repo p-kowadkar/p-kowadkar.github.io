@@ -43,7 +43,8 @@
         .timeline {
             position: relative;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0px auto;
+            padding: 20px 0;
         }
         
         .timeline::before {
@@ -110,6 +111,114 @@
             font-size: 1rem;
         }
         
+        /* Netflix card within timeline */
+        .timeline-item .netflix-card {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-item .netflix-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #141414;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item .netflix-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .netflix-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 100%);
+        }
+        
+        .netflix-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        
+        .netflix-card-info {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Detail view */
+        .netflix-detail {
+            margin-top: 30px;
+            background-color: #1A1A1A;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .detail-content {
+            display: flex;
+            padding: 20px;
+        }
+        
+        .detail-poster {
+            flex: 0 0 300px;
+        }
+        
+        .detail-poster img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background-color: #1A1A1A;
+            border-radius: 4px;
+        }
+        
+        .detail-info {
+            flex: 1;
+            padding-left: 30px;
+        }
+        
+        .detail-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .detail-meta {
+            display: flex;
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+        
+        .detail-meta span {
+            margin-right: 15px;
+        }
+        
+        .detail-description ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-description li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .detail-section-title {
+            color: #E50914;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             .timeline::before {
@@ -120,7 +229,7 @@
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 25px;
-                left: 0 !important;
+                /* left: 0 !important; */
             }
             
             .timeline-item:nth-child(even) {
@@ -191,68 +300,60 @@
                     <!-- Project 1: Gravitational Wave -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h3 class="timeline-title">Gravitational Wave Detection Analysis</h3>
-                            <div class="timeline-date">2023 | Python, TensorFlow, Signal Processing</div>
+                            <h3 class="timeline-title">Gravitational Wave Detection </h3>
+                            <div class="netflix-card-info">Python • DL • TensorFlow</div>
                         </div>
                         <div class="netflix-card" data-detail-id="project-1">
-                            <div class="netflix-card-image-container">
-                                <img src="./static/images/project-wave.webp" alt="Gravitational Wave Detection" loading="lazy">
-                            </div>
-                            <div class="netflix-card-details">
+                            <img src="./static/images/project-wave.webp" alt="Gravitational Wave Detection" loading="lazy">
+                            <!-- <div class="netflix-card-overlay">
                                 <h3 class="netflix-card-title">Gravitational Wave Detection</h3>
-                                <p class="netflix-card-info">Advanced signal processing & ML techniques</p>
-                            </div>
+                                <p class="netflix-card-info">Python • DL • TensorFlow</p>
+                            </div> -->
                         </div>
                     </div>
                     
                     <!-- Project 2: Interactive Anime Insights -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h3 class="timeline-title">Interactive Anime Insights Dashboard</h3>
-                            <div class="timeline-date">2022 | Python, Pandas, Streamlit, Plotly</div>
+                            <h3 class="timeline-title">Anime Insights Platform</h3>
+                            <div class="netflix-card-info">Python • Pandas • BeautifulSoup • Git/ GitHub</div>
                         </div>
                         <div class="netflix-card" data-detail-id="project-2">
-                            <div class="netflix-card-image-container">
-                                <img src="./static/images/project-anime.webp" alt="Anime Insights Dashboard" loading="lazy">
-                            </div>
-                            <div class="netflix-card-details">
+                            <img src="./static/images/project-anime.webp" alt="Anime Insights Dashboard" loading="lazy">
+                            <!-- <div class="netflix-card-details">
                                 <h3 class="netflix-card-title">Anime Insights Dashboard</h3>
                                 <p class="netflix-card-info">Interactive visualization platform</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
-                    <!-- Project 3: AI-Powered Chatbot Integration -->
+                    <!-- Project 3: Financial Document Analysis -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h3 class="timeline-title">AI-Powered Chatbot Integration</h3>
-                            <div class="timeline-date">2023 | JavaScript, API Integration</div>
+                            <h3 class="timeline-title">Content Recommendation Engine</h3>
+                            <div class="netflix-card-info">ML • AWS • Spark • Docker</div>
                         </div>
                         <div class="netflix-card" data-detail-id="project-3">
-                            <div class="netflix-card-image-container">
-                                <img src="./static/images/project-document.webp" alt="AI Chatbot" loading="lazy">
-                            </div>
-                            <div class="netflix-card-details">
-                                <h3 class="netflix-card-title">AI Chatbot Integration</h3>
+                            <img src="./static/images/project-document.webp" alt="AI Chatbot" loading="lazy">
+                            <!-- <div class="netflix-card-details">
+                                <h3 class="netflix-card-title">Financial Document Analysis</h3>
                                 <p class="netflix-card-info">Intelligent user interaction system</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
                     <!-- Project 4: E-commerce Recommendation System -->
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h3 class="timeline-title">E-commerce Product Recommendation System</h3>
-                            <div class="timeline-date">2021 | Python, Scikit-learn, TensorFlow</div>
+                            <h3 class="timeline-title">Financial Document Analysis</h3>
+                            <div class="netflix-card-info">DL • RAG • BERT • Vector DB • NLP</div>
                         </div>
                         <div class="netflix-card" data-detail-id="project-4">
-                            <div class="netflix-card-image-container">
-                                <img src="./static/images/project-recommendation.webp" alt="Recommendation System" loading="lazy">
-                            </div>
-                            <div class="netflix-card-details">
-                                <h3 class="netflix-card-title">E-commerce Recommendation System</h3>
-                                <p class="netflix-card-info">ML-powered product suggestions</p>
-                            </div>
+                            <img src="./static/images/project-recommendation.webp" alt="Recommendation System" loading="lazy">
+                            <!-- <div class="netflix-card-details">
+                                <h3 class="netflix-card-title">Financial Document Analysis</h3>
+                                <p class="netflix-card-info">NLP • Deep Learning<</p>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -262,28 +363,27 @@
                 <div id="project-1" class="netflix-detail" style="display: none;">
                     <div class="detail-content">
                         <div class="detail-poster">
-                            <img src="./static/images/project-wave.webp" alt="Gravitational Wave Detection" loading="lazy">
+                            <img src="./static/images/project-wave-large.webp" alt="Gravitational Wave Detection" loading="lazy">
                         </div>
                         <div class="detail-info">
-                            <h3 class="detail-title">Gravitational Wave Detection Analysis</h3>
+                            <h3 class="detail-title">Gravitational Wave Detection</h3>
                             <div class="detail-meta">
                                 <span>Python</span>
                                 <span>TensorFlow</span>
                                 <span>Signal Processing</span>
-                                <span>2023</span>
+                                <span>Deep Learning</span>
+                                <span>Astrophysics</span>
                             </div>
                             <div class="detail-description">
-                                <p>Developed an advanced analysis pipeline for gravitational wave detection data, implementing machine learning algorithms to identify potential signals in noisy detector data.</p>
+                                <h4 class="detail-section-title">
+                                    Developed an advanced analysis pipeline for gravitational wave detection data, implementing machine learning algorithms to identify potential signals in noisy detector data.
+                                </h4>
                                 <ul>
                                     <li>Designed specialized neural network architectures for detecting faint gravitational wave signals in LIGO data</li>
                                     <li>Implemented time-frequency analysis techniques to characterize signal properties</li>
                                     <li>Achieved 94% accuracy in detecting simulated gravitational wave events</li>
                                     <li>Created interactive visualizations to explore detection results and waveform characteristics</li>
                                 </ul>
-                            </div>
-                            <div class="detail-section">
-                                <h4 class="detail-section-title">Technologies Used</h4>
-                                <p>Python, TensorFlow, NumPy, SciPy, Signal Processing Libraries, Matplotlib, Jupyter</p>
                             </div>
                         </div>
                     </div>
@@ -302,10 +402,13 @@
                                 <span>Pandas</span>
                                 <span>Streamlit</span>
                                 <span>Plotly</span>
-                                <span>2022</span>
+                                <span>BeautifulSoup</span>
+                                <span>Git/ GitHub</span>
                             </div>
                             <div class="detail-description">
-                                <p>Created an interactive web-based dashboard for exploring and analyzing anime ratings, popularity trends, and genre preferences across different demographics.</p>
+                                <h4 class="detail-section-title">
+                                    Created an interactive web-based dashboard for exploring and analyzing anime ratings, popularity trends, and genre preferences across different demographics.
+                                </h4>
                                 <ul>
                                     <li>Scraped and processed data from MyAnimeList using Python, creating a dataset of 10,000+ anime titles</li>
                                     <li>Developed interactive visualizations for exploring trends in genre popularity over time</li>
@@ -313,40 +416,35 @@
                                     <li>Deployed the application using Streamlit Cloud for public access</li>
                                 </ul>
                             </div>
-                            <div class="detail-section">
-                                <h4 class="detail-section-title">Technologies Used</h4>
-                                <p>Python, Pandas, Streamlit, Plotly, BeautifulSoup, SQL, Git</p>
-                            </div>
                         </div>
                     </div>
                 </div>
                     
-                <!-- Project Detail 3: AI-Powered Chatbot -->
+                <!-- Project Detail 3:  Financial Document Analysis -->
                 <div id="project-3" class="netflix-detail" style="display: none;">
                     <div class="detail-content">
                         <div class="detail-poster">
-                            <img src="./static/images/project-document-large.webp" alt="AI Chatbot" loading="lazy">
+                            <img src="./static/images/project-document-large.webp" alt="Financial Document Analysis">
                         </div>
                         <div class="detail-info">
-                            <h3 class="detail-title">AI-Powered Chatbot Integration</h3>
+                            <h3 class="detail-title">AI-powered Financial Document Analysis System</h3>
                             <div class="detail-meta">
-                                <span>JavaScript</span>
-                                <span>API Integration</span>
-                                <span>UX Design</span>
-                                <span>2023</span>
+                                <span>Deep Learning</span>
+                                <span>RAG</span>
+                                <span>BERT</span>
+                                <span>Vector DB</span>
+                                <span>NLP</span>
                             </div>
                             <div class="detail-description">
-                                <p>Developed and integrated an intelligent chatbot to provide interactive assistance to website visitors.</p>
+                                <h4 class="detail-section-title">
+                                    Engineered a system to extract insights from unstructured financial PDFs using transformer-based LLMs fine-tuned on domain-specific data.
+                                </h4>
                                 <ul>
-                                    <li>Designed a user-friendly chat interface with responsive behavior</li>
-                                    <li>Integrated natural language processing capabilities via third-party APIs</li>
-                                    <li>Created a knowledge base of frequently asked questions and relevant responses</li>
-                                    <li>Added typing animations and message history for enhanced user experience</li>
+                                    <li>Utilized OCR and PDF parsing to extract textual content from scanned financial statements</li>
+                                    <li>Leveraged fine-tuned BERT and GPT-4 models to summarize and answer questions on earnings reports</li>
+                                    <li>Built an RAG (Retrieval-Augmented Generation) pipeline with Pinecone vector search and LangChain</li>
+                                    <li>Deployed system with fastAPI and integrated GPT-based feedback loops to improve accuracy</li>
                                 </ul>
-                            </div>
-                            <div class="detail-section">
-                                <h4 class="detail-section-title">Technologies Used</h4>
-                                <p>JavaScript, HTML, CSS, RESTful APIs, LocalStorage, JSON</p>
                             </div>
                         </div>
                     </div>
@@ -356,28 +454,30 @@
                 <div id="project-4" class="netflix-detail" style="display: none;">
                     <div class="detail-content">
                         <div class="detail-poster">
-                            <img src="./static/images/project-recommendation-large.webp" alt="Recommendation System" loading="lazy">
+                            <img src="./static/images/project-recommendation-large.webp" alt="Recommendation Engine">
                         </div>
                         <div class="detail-info">
-                            <h3 class="detail-title">E-commerce Product Recommendation System</h3>
+                            <h3 class="detail-title">Scalable Real-time Content Recommendation Engine</h3>
                             <div class="detail-meta">
                                 <span>Python</span>
-                                <span>Scikit-learn</span>
-                                <span>TensorFlow</span>
-                                <span>2021</span>
+                                <span>Machine Learning</span>
+                                <span>AWS</span>
+                                <span>Spark MLlib</span>
+                                <span>Kafka</span>
+                                <span>Redis</span>
+                                <span>Docker</span>
+                                <span>Terraform</span>
                             </div>
+                            <h4 class="detail-section-title">
+                                Developed a distributed recommendation engine using AWS EMR and Spark MLlib that processes 100GB+ daily data with sub-second response times.
+                            </h4>
                             <div class="detail-description">
-                                <p>Designed and implemented a machine learning-based recommendation system for an e-commerce platform.</p>
                                 <ul>
-                                    <li>Analyzed user behavior data to identify purchasing patterns</li>
-                                    <li>Developed collaborative filtering algorithms to generate personalized recommendations</li>
-                                    <li>Implemented A/B testing to evaluate recommendation effectiveness</li>
-                                    <li>Improved conversion rates by 15% through optimized product suggestions</li>
+                                    <li>Implemented collaborative filtering and content-based recommendation algorithms</li>
+                                    <li>Designed a real-time feature engineering pipeline using Kafka and Spark Streaming</li>
+                                    <li>Optimized model serving with Redis caching to achieve 50ms average response time</li>
+                                    <li>Deployed using containerized microservices architecture on AWS ECS</li>
                                 </ul>
-                            </div>
-                            <div class="detail-section">
-                                <h4 class="detail-section-title">Technologies Used</h4>
-                                <p>Python, Scikit-learn, TensorFlow, Pandas, NumPy, SQL, Docker</p>
                             </div>
                         </div>
                     </div>
