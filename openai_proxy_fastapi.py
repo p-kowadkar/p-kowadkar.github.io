@@ -12,6 +12,10 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
+@app.get("/ping")
+def ping():
+    return {"pong": True}
+
 # Allow CORS for local development (adjust origins for production)
 app.add_middleware(
     CORSMiddleware,
