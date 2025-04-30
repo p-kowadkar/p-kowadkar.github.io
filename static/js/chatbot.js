@@ -31,7 +31,7 @@ Keep responses brief and to the point, under 500 characters unless explicitly as
 
 // The API key is now stored securely on the backend. No key in frontend!
 const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat'; // Update to your deployed backend URL if needed
-const MODEL = 'gpt-4.1-nano'; // Upgraded to more advanced model
+const MODEL = 'o4-mini'; // Upgraded to more advanced model
 const RESUME_URL = './static/Data/resume.txt';
 
 let resumeContext = '';
