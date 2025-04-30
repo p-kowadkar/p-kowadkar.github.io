@@ -682,7 +682,7 @@
                         <img src="./static/images/project-recommendation.webp" alt="Recommendation Engine">
                         <div class="netflix-card-overlay">
                             <h3 class="netflix-card-title">Content Recommendation Engine</h3>
-                            <p class="netflix-card-info">ML • AWS • Spark</p>
+                            <p class="netflix-card-info">ML • AWS • Spark • Docker</p>
                         </div>
                     </div>
                     
@@ -691,7 +691,7 @@
                         <img src="./static/images/project-document.webp" alt="Document Analysis">
                         <div class="netflix-card-overlay">
                             <h3 class="netflix-card-title">Financial Document Analysis</h3>
-                            <p class="netflix-card-info">NLP • Deep Learning</p>
+                            <p class="netflix-card-info">DL • RAG • BERT • Vector DB • NLP</p>
                         </div>
                     </div>
                     
@@ -700,7 +700,7 @@
                         <img src="./static/images/project-wave.webp" alt="Gravitational Wave">
                         <div class="netflix-card-overlay">
                             <h3 class="netflix-card-title">Gravitational Wave Detection</h3>
-                            <p class="netflix-card-info">Signal Processing • ML</p>
+                            <p class="netflix-card-info">Python • DL • TensorFlow</p>
                         </div>
                     </div>
                     
@@ -709,7 +709,7 @@
                         <img src="./static/images/project-anime.webp" alt="Anime Insights">
                         <div class="netflix-card-overlay">
                             <h3 class="netflix-card-title">Anime Insights Platform</h3>
-                            <p class="netflix-card-info">Data Viz • Web Dev</p>
+                            <p class="netflix-card-info">Python • Pandas • BeautifulSoup • Git/ GitHub</p>
                         </div>
                     </div>
                 </div>
@@ -725,14 +725,19 @@
                     <div class="detail-info">
                         <h3 class="detail-title">Scalable Real-time Content Recommendation Engine</h3>
                         <div class="detail-meta">
+                            <span>Python</span>
                             <span>Machine Learning</span>
                             <span>AWS</span>
                             <span>Spark MLlib</span>
+                            <span>Kafka</span>
+                            <span>Redis</span>
+                            <span>Docker</span>
+                            <span>Terraform</span>
                         </div>
+                        <h4 class="detail-section-title">
+                            Developed a distributed recommendation engine using AWS EMR and Spark MLlib that processes 100GB+ daily data with sub-second response times.
+                        </h4>
                         <div class="detail-description">
-                            <p>
-                                Developed a distributed recommendation engine using AWS EMR and Spark MLlib that processes over 100GB of data daily with sub-second response times.
-                            </p>
                             <ul>
                                 <li>Implemented collaborative filtering and content-based recommendation algorithms</li>
                                 <li>Designed a real-time feature engineering pipeline using Kafka and Spark Streaming</li>
@@ -740,15 +745,6 @@
                                 <li>Deployed using containerized microservices architecture on AWS ECS</li>
                             </ul>
                         </div>
-                        <div class="detail-section">
-                            <h4 class="detail-section-title">Technologies Used</h4>
-                            <p>Python, Spark, AWS (EMR, S3, ECS), Kafka, Redis, Docker, Terraform</p>
-                        </div>
-                        <!-- <div class="detail-buttons">
-                            <a href="https://github.com/p-kowadkar/recommendation-engine" target="_blank" class="netflix-button netflix-button-secondary">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -762,23 +758,21 @@
                         <h3 class="detail-title">AI-powered Financial Document Analysis System</h3>
                         <div class="detail-meta">
                             <span>Deep Learning</span>
+                            <span>RAG</span>
+                            <span>BERT</span>
+                            <span>Vector DB</span>
                             <span>NLP</span>
-                            <span>LLMs</span>
                         </div>
                         <div class="detail-description">
-                            <p>
-                                Engineered a system to extract insights from unstructured financial PDFs using transformer-based language models fine-tuned on domain-specific data.
-                            </p>
+                            <h4 class="detail-section-title">
+                                Engineered a system to extract insights from unstructured financial PDFs using transformer-based LLMs fine-tuned on domain-specific data.
+                            </h4>
                             <ul>
                                 <li>Utilized OCR and PDF parsing to extract textual content from scanned financial statements</li>
                                 <li>Leveraged fine-tuned BERT and GPT-4 models to summarize and answer questions on earnings reports</li>
                                 <li>Built an RAG (Retrieval-Augmented Generation) pipeline with Pinecone vector search and LangChain</li>
                                 <li>Deployed system with fastAPI and integrated GPT-based feedback loops to improve accuracy</li>
                             </ul>
-                        </div>
-                        <div class="detail-section">
-                            <h4 class="detail-section-title">Technologies Used</h4>
-                            <p>Python, PyMuPDF, Hugging Face, Pinecone, LangChain, FastAPI, GPT-4</p>
                         </div>
                     </div>
                 </div>
@@ -788,29 +782,27 @@
             <div id="project-3" class="netflix-detail" style="display: none;">
                 <div class="detail-content">
                     <div class="detail-poster">
-                        <img src="./static/images/project-wave-large.webp" alt="Gravitational Wave Detection">
+                        <img src="./static/images/project-wave-large.webp" alt="Gravitational Wave Detection" loading="lazy">
                     </div>
                     <div class="detail-info">
-                        <h3 class="detail-title">Gravitational Wave Detection via Hybrid Deep Learning</h3>
+                        <h3 class="detail-title">Gravitational Wave Detection</h3>
                         <div class="detail-meta">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
                             <span>Signal Processing</span>
                             <span>Deep Learning</span>
                             <span>Astrophysics</span>
                         </div>
                         <div class="detail-description">
-                            <p>
-                                Designed a hybrid CNN-RNN architecture to detect gravitational wave signals buried in noise using LIGO datasets.
-                            </p>
+                            <h4 class="detail-section-title">
+                                Developed an advanced analysis pipeline for gravitational wave detection data, implementing machine learning algorithms to identify potential signals in noisy detector data.
+                            </h4>
                             <ul>
-                                <li>Preprocessed time-series data using Fourier transforms and filtering techniques</li>
-                                <li>Developed an EfficientNetB7 encoder coupled with a bi-directional GRU decoder for classification</li>
-                                <li>Achieved 86.84% accuracy with precision-focused evaluation on rare wave events</li>
-                                <li>Integrated model into a PyTorch training loop with early stopping and LR schedulers</li>
+                                <li>Designed specialized neural network architectures for detecting faint gravitational wave signals in LIGO data</li>
+                                <li>Implemented time-frequency analysis techniques to characterize signal properties</li>
+                                <li>Achieved 94% accuracy in detecting simulated gravitational wave events</li>
+                                <li>Created interactive visualizations to explore detection results and waveform characteristics</li>
                             </ul>
-                        </div>
-                        <div class="detail-section">
-                            <h4 class="detail-section-title">Technologies Used</h4>
-                            <p>Python, PyTorch, NumPy, SciPy, Matplotlib, LIGO Dataset</p>
                         </div>
                     </div>
                 </div>
@@ -820,29 +812,28 @@
             <div id="project-4" class="netflix-detail" style="display: none;">
                 <div class="detail-content">
                     <div class="detail-poster">
-                        <img src="./static/images/project-anime-large.webp" alt="Anime Insights">
+                        <img src="./static/images/project-anime-large.webp" alt="Anime Insights Dashboard" loading="lazy">
                     </div>
                     <div class="detail-info">
-                        <h3 class="detail-title">Anime Insights and Recommendation Platform</h3>
+                        <h3 class="detail-title">Interactive Anime Insights Dashboard</h3>
                         <div class="detail-meta">
-                            <span>Data Visualization</span>
-                            <span>Flask</span>
-                            <span>Recommendation</span>
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Streamlit</span>
+                            <span>Plotly</span>
+                            <span>BeautifulSoup</span>
+                            <span>Git/ GitHub</span>
                         </div>
                         <div class="detail-description">
-                            <p>
-                                Built a full-stack web app delivering real-time anime recommendations and insights from MyAnimeList data.
-                            </p>
+                            <h4 class="detail-section-title">
+                                Created an interactive web-based dashboard for exploring and analyzing anime ratings, popularity trends, and genre preferences across different demographics.
+                            </h4>
                             <ul>
-                                <li>Scraped and processed 15,000+ anime titles for metadata, reviews, and ratings</li>
-                                <li>Built collaborative filtering system using cosine similarity and user embeddings</li>
-                                <li>Created D3.js visualizations for trends in genre, popularity, and ratings</li>
-                                <li>Integrated search and filter interface with Flask, HTML/CSS, and Bootstrap</li>
+                                <li>Scraped and processed data from MyAnimeList using Python, creating a dataset of 10,000+ anime titles</li>
+                                <li>Developed interactive visualizations for exploring trends in genre popularity over time</li>
+                                <li>Implemented recommendation features based on user preferences and viewing history</li>
+                                <li>Deployed the application using Streamlit Cloud for public access</li>
                             </ul>
-                        </div>
-                        <div class="detail-section">
-                            <h4 class="detail-section-title">Technologies Used</h4>
-                            <p>Python, Flask, Pandas, D3.js, BeautifulSoup, Bootstrap</p>
                         </div>
                     </div>
                 </div>
