@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills | Pranav Kowadkar</title>
+    <title>Skills - Pranav Kowadkar</title>
     <!-- Empty favicon to override browser defaults -->
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./static/css/style.css">
@@ -18,7 +18,7 @@
         /* --- Start: Soap Bubble Styles --- */
         .skills-section {
             position: relative;
-            min-height: 100vh;
+            min-height: 150vh;
             width: 100%;
             overflow: hidden;
             display: flex;
@@ -208,6 +208,35 @@
              }
         }
 
+        /* Add CSS styles for the animations */
+        .water-fill {
+            transition: all 0.3s ease;
+        }
+        
+        .bubble:hover .water-fill {
+            filter: url(#water-turbulence) brightness(1.2);
+        }
+        
+        .shine {
+            transition: all 0.3s ease;
+        }
+        
+        .bubble:hover .shine {
+            opacity: 0.5;
+            transform: translate(-5px, -5px);
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
     </style>
     
 </head>
@@ -231,27 +260,30 @@
         </div>
     </header>
 
-    <!-- Page Title -->
-    <section class="page-title">
-        <div class="container">
-            <h1>My Skills</h1>
-        </div>
-    </section>
-
-    <!-- Skills Section - Replaced with Bubbles -->
-    <section class="skills-section" id="skills">
-        <!-- Container for D3 SVG -->
-        <div id="skill-tree-container"></div>
-        
-        <!-- Hidden card for displaying skill details -->
-        <div id="skill-card" class="">
-            <div class="card-content">
-                <h2 class="skill-name"></h2>
-                <p class="skill-description"></p>
-                <div class="projects-list"></div>
+    <!-- Main Content -->
+    <main>
+        <!-- Page Title -->
+        <section class="page-title">
+            <div class="container">
+                <h1>My Skills</h1>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Skills Section - Replaced with Bubbles -->
+        <section class="skills-section" id="skills">
+            <!-- Container for D3 SVG -->
+            <div id="skill-tree-container"></div>
+            
+            <!-- Hidden card for displaying skill details -->
+            <div id="skill-card" class="">
+                <div class="card-content">
+                    <h2 class="skill-name"></h2>
+                    <p class="skill-description"></p>
+                    <div class="projects-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -301,152 +333,283 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Skill data
             const skillData = {
-                // Programming Languages
+                // Programming & Core Tools
                 "Python": {
-                    description: "High-level, versatile language for data science, ML, and automation.",
-                    projects: ["Data Science", "Web Dev", "Automation"]
-                },
-                "R": {
-                    description: "Statistical computing and graphics for data analysis.",
-                    projects: ["Statistical Analysis", "Data Visualization", "Reporting"]
-                },
-                "SQL": {
-                    description: "Structured Query Language for databases and analytics.",
-                    projects: ["Data Pipelines", "Reporting", "Optimized Queries"]
-                },
-                "JavaScript": {
-                    description: "Web development, interactivity, and data visualization.",
-                    projects: ["D3.js", "Frontend", "APIs"]
-                },
-                "Java": {
-                    description: "Object-oriented programming for enterprise and backend systems.",
-                    projects: ["Backend Dev", "OOP", "APIs"]
-                },
-                // Machine Learning
-                "TensorFlow": {
-                    description: "Deep learning framework for neural networks and AI.",
-                    projects: ["Neural Networks", "Model Training", "Deployment"]
+                    description: "Versatile scripting language for data science and ML",
+                    projects: ["Gravitational Wave", "Financial Analysis", "Web Apps"],
+                    mastery: 95
                 },
                 "PyTorch": {
-                    description: "Flexible deep learning library for research and production.",
-                    projects: ["Computer Vision", "NLP", "Custom Models"]
+                    description: "Deep learning framework for neuroimaging and ML",
+                    projects: ["Neuroimaging", "LLM Fine-tuning", "Computer Vision"],
+                    mastery: 92
+                },
+                "TensorFlow": {
+                    description: "Deep learning framework for ML applications",
+                    projects: ["Gravitational Wave", "Neural Networks", "Model Training"],
+                    mastery: 85
+                },
+                "SQL": {
+                    description: "Query optimization and database management",
+                    projects: ["Data Warehousing", "Analytics", "Reporting"],
+                    mastery: 90
+                },
+                "C++": {
+                    description: "Performance computing and system development",
+                    projects: ["Dassault CATIA", "Memory Optimization", "Linux"],
+                    mastery: 80
+                },
+                "C#": {
+                    description: "Legacy banking systems and enterprise applications",
+                    projects: ["Cognizant Banking", "Transaction Processing"],
+                    mastery: 78
+                },
+                // Data Science & ML
+                "NumPy": {
+                    description: "High-performance numerical computing",
+                    projects: ["Statistical Analysis", "Data Processing"],
+                    mastery: 90
+                },
+                "Pandas": {
+                    description: "Data wrangling and analysis",
+                    projects: ["Data Engineering", "Analytics"],
+                    mastery: 90
                 },
                 "Scikit-learn": {
-                    description: "Machine learning library for classical ML algorithms.",
-                    projects: ["Classification", "Regression", "Clustering"]
+                    description: "Traditional ML algorithms and pipelines",
+                    projects: ["Various ML Projects", "Classification"],
+                    mastery: 80
                 },
-                "Deep Learning": {
-                    description: "Building and training deep neural networks for complex tasks.",
-                    projects: ["CNNs", "RNNs", "Transfer Learning"]
+                "Keras": {
+                    description: "Neural network API for deep learning",
+                    projects: ["Wave Detection", "Model Building"],
+                    mastery: 82
+                },
+                // AI & LLMs
+                "LLMs & Transformers": {
+                    description: "Working with large language models",
+                    projects: ["Neuroimaging Classification", "NLP"],
+                    mastery: 92
+                },
+                "Fine-Tuning": {
+                    description: "Customizing models for specific tasks",
+                    projects: ["LLaMA Fine-tuning", "Domain Adaptation"],
+                    mastery: 90
+                },
+                "Knowledge Distillation": {
+                    description: "Compressing and optimizing models",
+                    projects: ["LLM Distillation", "Model Optimization"],
+                    mastery: 88
+                },
+                "Model Quantization": {
+                    description: "Reducing model size and improving efficiency",
+                    projects: ["Neuroimaging Models", "Edge Deployment"],
+                    mastery: 86
                 },
                 "NLP": {
-                    description: "Natural Language Processing for text and language data.",
-                    projects: ["Text Mining", "Sentiment Analysis", "LLMs"]
+                    description: "Natural language processing and analysis",
+                    projects: ["Financial Documents", "Text Analysis"],
+                    mastery: 87
                 },
-                // Data Science
-                "Statistical Analysis": {
-                    description: "Analyzing data using statistical methods and models.",
-                    projects: ["Hypothesis Testing", "Regression", "Inference"]
+                "RAG": {
+                    description: "Retrieval Augmented Generation",
+                    projects: ["Financial Document Analysis", "QA Systems"],
+                    mastery: 85
                 },
-                "Hypothesis Testing": {
-                    description: "Testing assumptions and drawing conclusions from data.",
-                    projects: ["A/B Testing", "Significance", "Confidence Intervals"]
+                "Prompt Engineering": {
+                    description: "Crafting prompts for optimal LLM performance",
+                    projects: ["GPT-4 Fine-tuning", "System Design"],
+                    mastery: 88
                 },
-                "A/B Testing": {
-                    description: "Experimentation and comparison of variants for optimization.",
-                    projects: ["Product Experiments", "Conversion Rate", "User Testing"]
+                // ML Operations & Engineering
+                "MLOps": {
+                    description: "Monitoring and managing ML systems",
+                    projects: ["Anime Insights", "Model Deployment"],
+                    mastery: 82
+                },
+                "Deep Learning": {
+                    description: "Designing and training neural networks",
+                    projects: ["Gravitational Wave", "Computer Vision"],
+                    mastery: 90
                 },
                 "Feature Engineering": {
-                    description: "Creating and selecting features for ML models.",
-                    projects: ["Feature Selection", "Encoding", "Scaling"]
+                    description: "Crafting and selecting features",
+                    projects: ["HR Analytics", "ML Pipelines"],
+                    mastery: 84
                 },
-                "Time Series Analysis": {
-                    description: "Analyzing temporal data for trends and forecasting.",
-                    projects: ["Forecasting", "Seasonality", "ARIMA"]
+                "Statistical Modeling": {
+                    description: "Building probabilistic models",
+                    projects: ["Gravitational Wave", "Analytics"],
+                    mastery: 83
                 },
-                // Data Visualization
-                "Tableau": {
-                    description: "Interactive dashboards and data visualization.",
-                    projects: ["Dashboards", "Storytelling", "Business Insights"]
-                },
-                "Power BI": {
-                    description: "Business analytics and visualization by Microsoft.",
-                    projects: ["Reports", "Dashboards", "Data Modeling"]
-                },
-                "Looker Studio": {
-                    description: "Google's platform for data visualization and reporting.",
-                    projects: ["Data Studio", "Custom Reports", "Visualization"]
-                },
-                "Matplotlib/Seaborn": {
-                    description: "Python libraries for static, animated, and interactive plots.",
-                    projects: ["Charts", "Statistical Plots", "EDA"]
-                },
-                "D3.js": {
-                    description: "JavaScript library for dynamic, interactive data visualizations.",
-                    projects: ["SVG Graphics", "Custom Charts", "Web Viz"]
-                },
-                // Data Engineering
-                "Spark": {
-                    description: "Big data processing and analytics engine.",
-                    projects: ["ETL", "Streaming", "ML Pipelines"]
+                // Data Engineering & Infrastructure
+                "Apache Spark": {
+                    description: "Big data processing and analytics",
+                    projects: ["Content Recommendation", "ETL"],
+                    mastery: 88
                 },
                 "Airflow": {
-                    description: "Workflow automation and scheduling for data pipelines.",
-                    projects: ["DAGs", "ETL Orchestration", "Monitoring"]
-                },
-                "Kafka": {
-                    description: "Distributed streaming platform for real-time data.",
-                    projects: ["Event Streaming", "Data Integration", "Analytics"]
-                },
-                "ETL Pipelines": {
-                    description: "Extract, Transform, Load processes for data integration.",
-                    projects: ["Data Cleaning", "Transformation", "Loading"]
+                    description: "Orchestrating data pipelines",
+                    projects: ["Recommendation Engine", "ETL"],
+                    mastery: 87
                 },
                 "Data Warehousing": {
-                    description: "Centralized storage for structured data analytics.",
-                    projects: ["Snowflake", "Redshift", "BigQuery"]
+                    description: "Design and implementation",
+                    projects: ["Snowflake", "Analytics"],
+                    mastery: 83
                 },
-                // Big Data
-                "Hadoop": {
-                    description: "Distributed storage and processing of large datasets.",
-                    projects: ["HDFS", "MapReduce", "Batch Processing"]
+                "Kafka": {
+                    description: "Real-time event streaming",
+                    projects: ["Recommendation Engine", "Events"],
+                    mastery: 80
                 },
-                "Hive": {
-                    description: "Data warehouse software for querying and managing big data.",
-                    projects: ["SQL on Hadoop", "Data Analysis", "Reporting"]
-                },
-                "Databricks": {
-                    description: "Unified analytics platform for big data and AI.",
-                    projects: ["Collaborative Notebooks", "Delta Lake", "MLflow"]
-                },
-                "Distributed Computing": {
-                    description: "Parallel processing across multiple machines.",
-                    projects: ["Cluster Computing", "Scalability", "Performance"]
-                },
-                "Data Lakes": {
-                    description: "Storage repository for large amounts of raw data.",
-                    projects: ["S3", "Azure Data Lake", "Unstructured Data"]
+                "Elasticsearch": {
+                    description: "Search engine and analytics",
+                    projects: ["Recommendation Engine", "Search"],
+                    mastery: 78
                 },
                 // Cloud & DevOps
                 "AWS": {
-                    description: "Amazon Web Services for cloud computing and ML.",
-                    projects: ["EC2", "S3", "Lambda"]
+                    description: "Cloud computing and infrastructure",
+                    projects: ["Content Recommendation", "ML Deployment"],
+                    mastery: 90
                 },
                 "Docker": {
-                    description: "Containerization for consistent environments.",
-                    projects: ["Containers", "Microservices", "CI/CD"]
+                    description: "Containerization and deployment",
+                    projects: ["Anime Insights", "Microservices"],
+                    mastery: 85
                 },
-                "Kubernetes": {
-                    description: "Container orchestration for automated deployment.",
-                    projects: ["Scaling", "Service Discovery", "DevOps"]
+                "Git": {
+                    description: "Version control and collaboration",
+                    projects: ["Anime Insights", "Development"],
+                    mastery: 88
                 },
                 "CI/CD": {
-                    description: "Continuous Integration and Continuous Deployment.",
-                    projects: ["Automation", "Testing", "Deployment"]
+                    description: "Continuous Integration/Deployment",
+                    projects: ["Anime Insights", "Automation"],
+                    mastery: 80
                 },
-                "Terraform": {
-                    description: "Infrastructure as code for provisioning cloud resources.",
-                    projects: ["IaC", "Cloud Automation", "Resource Management"]
+                "GCP": {
+                    description: "Google Cloud Platform services",
+                    projects: ["Cloud Computing", "ML"],
+                    mastery: 40
+                },
+                "Azure": {
+                    description: "Experience with Microsoft Azure",
+                    projects: ["Bayer Campaign", "Data Factory"],
+                    mastery: 78
+                },
+                "Google Colab": {
+                    description: "Cloud-based development",
+                    projects: ["Quick LLM Prototypes", "Research"],
+                    mastery: 85
+                },
+                "Heroku": {
+                    description: "Cloud PaaS deployment",
+                    projects: ["Anime Insights", "Web Apps"],
+                    mastery: 70
+                },
+                // Visualization & BI
+                "Power BI": {
+                    description: "Data visualization and analytics",
+                    projects: ["Bayer Consumer Insights", "Dashboards"],
+                    mastery: 85
+                },
+                "Tableau": {
+                    description: "Visual analytics and reporting",
+                    projects: ["Aerospace Analytics", "Dashboards"],
+                    mastery: 85
+                },
+                "Looker Studio": {
+                    description: "Google visualization platform",
+                    projects: ["JerseySTEM Analytics", "Reports"],
+                    mastery: 80
+                },
+                "Matplotlib": {
+                    description: "Core plotting library",
+                    projects: ["UAV Design", "Data Viz"],
+                    mastery: 90
+                },
+                "Seaborn": {
+                    description: "Statistical data visualization",
+                    projects: ["UAV Dashboard", "Analytics"],
+                    mastery: 85
+                },
+                "Plotly": {
+                    description: "Interactive visualization",
+                    projects: ["Gravitational Wave", "Dashboards"],
+                    mastery: 84
+                },
+                "Dash": {
+                    description: "Python framework for web analytics",
+                    projects: ["Physicist Web Apps", "Dashboards"],
+                    mastery: 80
+                },
+                // Specialized Tools
+                "Jupyter Notebooks": {
+                    description: "Go-to platform for data science",
+                    projects: ["Research", "Analysis", "Prototyping"],
+                    mastery: 95
+                },
+                "HuggingFace": {
+                    description: "Library for transformer models",
+                    projects: ["LLM Fine-tuning", "NLP"],
+                    mastery: 88
+                },
+                "Tokenizers": {
+                    description: "Converting text for LLMs",
+                    projects: ["fMRI Voxel Processing", "NLP"],
+                    mastery: 87
+                },
+                "Edge Deployment": {
+                    description: "Deploying models to edge devices",
+                    projects: ["LLM Quantization", "Optimization"],
+                    mastery: 75
+                },
+                "Multithreading": {
+                    description: "Parallel processing",
+                    projects: ["Banking Systems", "Performance"],
+                    mastery: 70
+                },
+                "Lambda Functions": {
+                    description: "Serverless computing",
+                    projects: ["Recommendation Engine", "APIs"],
+                    mastery: 85
+                },
+                "API Gateway": {
+                    description: "Managing APIs",
+                    projects: ["Content Platform", "Services"],
+                    mastery: 82
+                },
+                "DynamoDB": {
+                    description: "NoSQL database",
+                    projects: ["Recommendation Engine", "Storage"],
+                    mastery: 78
+                },
+                "Azure Data Factory": {
+                    description: "ETL pipeline service",
+                    projects: ["Bayer Campaign", "Data Integration"],
+                    mastery: 78
+                },
+                "Snowflake": {
+                    description: "Cloud data platform",
+                    projects: ["Bayer Healthcare", "Analytics"],
+                    mastery: 82
+                },
+                "GitHub Actions": {
+                    description: "Automation and CI/CD",
+                    projects: ["Anime Insights", "DevOps"],
+                    mastery: 82
+                },
+                "Prometheus": {
+                    description: "Monitoring and alerting",
+                    projects: ["Vaandu Pipeline", "Metrics"],
+                    mastery: 82
+                },
+                "Grafana": {
+                    description: "Dashboard and visualization",
+                    projects: ["AWS Lambda", "Monitoring"],
+                    mastery: 85
                 }
             };
             
@@ -470,18 +633,128 @@
 
             const defs = svg.append("defs");
             
-            const bubbleGradient = defs.append("radialGradient")
-                .attr("id", "bubble-gradient")
-                .attr("cx", "50%").attr("cy", "50%").attr("r", "50%")
-                .attr("fx", "30%").attr("fy", "30%");
+            // Add turbulence filter for water movement
+            const filter = defs.append("filter")
+                .attr("id", "water-turbulence")
+                .attr("x", "-50%")
+                .attr("y", "-50%")
+                .attr("width", "200%")
+                .attr("height", "200%");
 
-            bubbleGradient.append("stop")
+            // Create more complex turbulence
+            const turbulence1 = filter.append("feTurbulence")
+                .attr("type", "fractalNoise")
+                .attr("baseFrequency", "0.02 0.05")
+                .attr("numOctaves", "3")
+                .attr("seed", "1")
+                .attr("result", "turbulence1");
+
+            const turbulence2 = filter.append("feTurbulence")
+                .attr("type", "fractalNoise")
+                .attr("baseFrequency", "0.05 0.02")
+                .attr("numOctaves", "2")
+                .attr("seed", "2")
+                .attr("result", "turbulence2");
+
+            // Animate both turbulence patterns
+            turbulence1.append("animate")
+                .attr("attributeName", "baseFrequency")
+                .attr("dur", "15s")
+                .attr("keyTimes", "0;0.25;0.5;0.75;1")
+                .attr("values", "0.02 0.05;0.04 0.06;0.02 0.05;0.03 0.04;0.02 0.05")
+                .attr("repeatCount", "indefinite");
+
+            turbulence2.append("animate")
+                .attr("attributeName", "baseFrequency")
+                .attr("dur", "20s")
+                .attr("keyTimes", "0;0.25;0.5;0.75;1")
+                .attr("values", "0.05 0.02;0.03 0.04;0.05 0.02;0.04 0.03;0.05 0.02")
+                .attr("repeatCount", "indefinite");
+
+            // Combine turbulence effects
+            filter.append("feComposite")
+                .attr("in", "turbulence1")
+                .attr("in2", "turbulence2")
+                .attr("operator", "arithmetic")
+                .attr("k1", "0.5")
+                .attr("k2", "0.5")
+                .attr("k3", "0.5")
+                .attr("k4", "0")
+                .attr("result", "combined");
+
+            filter.append("feDisplacementMap")
+                .attr("in", "SourceGraphic")
+                .attr("in2", "combined")
+                .attr("scale", "15")
+                .attr("xChannelSelector", "R")
+                .attr("yChannelSelector", "B");
+
+            // Enhanced water gradient with more color stops
+            const waterGradient = defs.append("linearGradient")
+                .attr("id", "water-gradient")
+                .attr("x1", "0%")
+                .attr("y1", "100%")
+                .attr("x2", "0%")
+                .attr("y2", "0%");
+
+            waterGradient.append("stop")
                 .attr("offset", "0%")
-                .attr("stop-color", "rgba(255, 255, 255, 0.3)");
+                .attr("stop-color", "rgba(229, 9, 20, 0.5)");
 
-            bubbleGradient.append("stop")
+            waterGradient.append("stop")
+                .attr("offset", "30%")
+                .attr("stop-color", "rgba(229, 9, 20, 0.3)");
+
+            waterGradient.append("stop")
+                .attr("offset", "70%")
+                .attr("stop-color", "rgba(229, 9, 20, 0.2)");
+
+            waterGradient.append("stop")
                 .attr("offset", "100%")
                 .attr("stop-color", "rgba(229, 9, 20, 0.1)");
+
+            // Add animated wave patterns
+            const wavePattern1 = defs.append("pattern")
+                .attr("id", "wave-pattern-1")
+                .attr("patternUnits", "userSpaceOnUse")
+                .attr("width", "200")
+                .attr("height", "200")
+                .attr("patternTransform", "rotate(45)");
+
+            wavePattern1.append("path")
+                .attr("d", "M0,100 Q50,80 100,100 T200,100")
+                .attr("fill", "none")
+                .attr("stroke", "rgba(229, 9, 20, 0.2)")
+                .attr("stroke-width", "20");
+
+            wavePattern1.append("animateTransform")
+                .attr("attributeName", "patternTransform")
+                .attr("type", "translate")
+                .attr("from", "0 0")
+                .attr("to", "200 0")
+                .attr("dur", "8s")
+                .attr("repeatCount", "indefinite");
+
+            const wavePattern2 = defs.append("pattern")
+                .attr("id", "wave-pattern-2")
+                .attr("patternUnits", "userSpaceOnUse")
+                .attr("width", "200")
+                .attr("height", "200")
+                .attr("patternTransform", "rotate(-45)");
+
+            wavePattern2.append("path")
+                .attr("d", "M0,100 Q50,120 100,100 T200,100")
+                .attr("fill", "none")
+                .attr("stroke", "rgba(229, 9, 20, 0.15)")
+                .attr("stroke-width", "15");
+
+            wavePattern2.append("animateTransform")
+                .attr("attributeName", "patternTransform")
+                .attr("type", "translate")
+                .attr("from", "0 0")
+                .attr("to", "-200 0")
+                .attr("dur", "12s")
+                .attr("repeatCount", "indefinite");
 
             const skills = Object.entries(skillData).map(([name, data]) => ({
                 id: name.replace(/[^a-zA-Z0-9_-]/g, '-'), // Sanitize for valid selector
@@ -509,23 +782,106 @@
                     .on("drag", dragged)
                     .on("end", dragended));
 
+            // Add bubble background
             bubbles.append("circle")
                 .attr("r", d => d.radius)
-                .attr("fill", "url(#bubble-gradient)")
+                .attr("fill", "rgba(20, 20, 20, 0.6)")
                 .attr("stroke", "#E50914")
                 .attr("stroke-width", 2)
                 .attr("stroke-opacity", 0.4);
+
+            // Add water fill with clip path
+            bubbles.each(function(d) {
+                const bubble = d3.select(this);
                 
+                // Create clip path for water
+                const clipPath = bubble.append("clipPath")
+                    .attr("id", d => `clip-${d.id}`);
+                
+                clipPath.append("circle")
+                    .attr("r", d => d.radius);
+
+                // Add first wave layer
+                bubble.append("rect")
+                    .attr("x", -d.radius)
+                    .attr("y", d.radius - (d.radius * 2 * (d.mastery / 100)))
+                    .attr("width", d.radius * 2)
+                    .attr("height", d.radius * 2)
+                    .attr("fill", "url(#wave-pattern-1)")
+                    .attr("clip-path", `url(#clip-${d.id})`)
+                    .attr("class", "water-wave")
+                    .style("opacity", 0.3)
+                    .style("mix-blend-mode", "soft-light");
+
+                // Add second wave layer
+                bubble.append("rect")
+                    .attr("x", -d.radius)
+                    .attr("y", d.radius - (d.radius * 2 * (d.mastery / 100)))
+                    .attr("width", d.radius * 2)
+                    .attr("height", d.radius * 2)
+                    .attr("fill", "url(#wave-pattern-2)")
+                    .attr("clip-path", `url(#clip-${d.id})`)
+                    .attr("class", "water-wave")
+                    .style("opacity", 0.2)
+                    .style("mix-blend-mode", "soft-light");
+
+                // Add main water fill with turbulence
+                bubble.append("rect")
+                    .attr("x", -d.radius)
+                    .attr("y", d.radius - (d.radius * 2 * (d.mastery / 100)))
+                    .attr("width", d.radius * 2)
+                    .attr("height", d.radius * 2)
+                    .attr("fill", "url(#water-gradient)")
+                    .attr("clip-path", `url(#clip-${d.id})`)
+                    .attr("class", "water-fill")
+                    .style("mix-blend-mode", "soft-light")
+                    .style("filter", "url(#water-turbulence)");
+
+                // Add shine effect
+                bubble.append("circle")
+                    .attr("r", d.radius * 0.8)
+                    .attr("fill", "url(#shine-gradient)")
+                    .attr("clip-path", `url(#clip-${d.id})`)
+                    .attr("class", "shine")
+                    .style("opacity", 0.3)
+                    .attr("transform", "translate(-10, -10)");
+            });
+
+            // Add text last to ensure it's on top
             bubbles.append("text")
                 .text(d => d.name)
                 .attr("text-anchor", "middle")
                 .attr("dy", ".3em")
                 .style("font-size", d => `${Math.max(10, d.radius / 3.5)}px`);
 
+            // Add mastery percentage
+            bubbles.append("text")
+                .text(d => `${d.mastery}%`)
+                .attr("text-anchor", "middle")
+                .attr("dy", "2em")
+                .style("font-size", d => `${Math.max(8, d.radius / 4)}px`)
+                .style("fill", "rgba(255, 255, 255, 0.7)");
+
             bubbles.transition()
                 .duration(800)
                 .delay((d, i) => i * 50)
                 .style("opacity", 1);
+
+            // Add ripple animation
+            function addRippleAnimation() {
+                bubbles.selectAll(".ripple")
+                    .transition()
+                    .duration(2000)
+                    .attr("r", d => d.radius * 1.2)
+                    .style("opacity", 0)
+                    .transition()
+                    .duration(0)
+                    .attr("r", d => d.radius - 2)
+                    .style("opacity", 1)
+                    .on("end", addRippleAnimation);
+            }
+
+            addRippleAnimation();
 
             simulation.on("tick", () => {
                 bubbles.attr("transform", d => `translate(${d.x},${d.y})`);

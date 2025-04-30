@@ -111,6 +111,65 @@
             transform: translateY(-5px);
         }
 
+        /* Slider Navigation Styles */
+        .netflix-slider {
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slider-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-prev {
+            left: 0;
+        }
+
+        .slider-next {
+            right: 0;
+        }
+
+        .slider-nav i {
+            font-size: 1.2rem;
+        }
+
+        .netflix-slider-inner {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding: 10px 0;
+        }
+
+        .netflix-slider-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .netflix-card {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            scroll-snap-align: start;
+        }
+
     </style>
 
 </head>
@@ -197,11 +256,11 @@
             </div>
             <div class="about-body animate-on-scroll">                
                 <p class="lead">
-                  I’m <strong>Pranav Kowadkar</strong> - a technologist who builds bridges between raw data and real-world transformation.
+                  I'm <strong>Pranav Kowadkar</strong> - a technologist who builds bridges between raw data and real-world transformation.
                 </p>
                 
                 <p>
-                  I don’t just design systems.<br>
+                  I don't just design systems.<br>
                   I craft ecosystems - where intelligence flows, decisions accelerate, and ideas find their fullest expression.
                 </p>
                 
@@ -222,11 +281,11 @@
                 
                 <p>
                   <em>Engineer. Architect. Storyteller.</em>  
-                  Because great technology doesn’t just work - it speaks, it leads, and it endures.
+                  Because great technology doesn't just work - it speaks, it leads, and it endures.
                 </p>
                 
                 <p class="cta">
-                  Building something the world hasn’t seen yet? <strong>Let’s build it together.</strong>
+                  Building something the world hasn't seen yet? <strong>Let's build it together.</strong>
                 </p>                                
                 
             </div>
@@ -281,6 +340,9 @@
                 <a href="experience.html" class="see-all">See All</a>
             </div>
             <div class="netflix-slider">
+                <button class="slider-nav slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="netflix-slider-inner">
                     <!-- Experience Card 1 -->
                     <div class="netflix-card" data-detail-id="experience-1">
@@ -346,6 +408,9 @@
                     </div>
 
                 </div>
+                <button class="slider-nav slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             
             <!-- Experience Detail Views (Hidden by default) -->
@@ -676,6 +741,9 @@
                 <a href="projects.html" class="see-all">See All</a>
             </div>
             <div class="netflix-slider">
+                <button class="slider-nav slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="netflix-slider-inner">
                     <!-- Project Card 1 -->
                     <div class="netflix-card" data-detail-id="project-1">
@@ -713,6 +781,9 @@
                         </div>
                     </div>
                 </div>
+                <button class="slider-nav slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             
             <!-- Project Detail Views -->
@@ -849,6 +920,9 @@
                 <a href="skills.html" class="see-all">See All</a>
             </div>
             <div class="netflix-slider">
+                <button class="slider-nav slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="netflix-slider-inner">
                     <!-- Programming Languages Card -->
                     <div class="netflix-card" data-category="programming">
@@ -1123,6 +1197,9 @@
                         </div>
                     </div>
                 </div>
+                <button class="slider-nav slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1384,6 +1461,63 @@ CONTACT SECTION END
 
         document.querySelectorAll('.section-title, .lead, .cta, p').forEach(el => {
             observer.observe(el);
+        });
+
+        // Slider Navigation Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.netflix-slider');
+            
+            sliders.forEach(slider => {
+                const prevBtn = slider.querySelector('.slider-prev');
+                const nextBtn = slider.querySelector('.slider-next');
+                const sliderInner = slider.querySelector('.netflix-slider-inner');
+                
+                // Skip if this slider doesn't have navigation buttons
+                if (!prevBtn || !nextBtn) return;
+                
+                const cards = slider.querySelectorAll('.netflix-card');
+                if (cards.length === 0) return;  // Skip if no cards
+                
+                const cardWidth = cards[0].offsetWidth + 15; // Width + margin
+                
+                let currentPosition = 0;
+                const maxScroll = sliderInner.scrollWidth - sliderInner.clientWidth;
+                
+                // Function to update button states
+                const updateButtonStates = () => {
+                    prevBtn.style.opacity = currentPosition <= 0 ? '0.5' : '1';
+                    nextBtn.style.opacity = currentPosition >= maxScroll ? '0.5' : '1';
+                };
+                
+                // Initial button state
+                updateButtonStates();
+                
+                // Previous button click
+                prevBtn.addEventListener('click', () => {
+                    currentPosition = Math.max(0, currentPosition - cardWidth * 3);
+                    sliderInner.scrollTo({
+                        left: currentPosition,
+                        behavior: 'smooth'
+                    });
+                    updateButtonStates();
+                });
+                
+                // Next button click
+                nextBtn.addEventListener('click', () => {
+                    currentPosition = Math.min(maxScroll, currentPosition + cardWidth * 3);
+                    sliderInner.scrollTo({
+                        left: currentPosition,
+                        behavior: 'smooth'
+                    });
+                    updateButtonStates();
+                });
+                
+                // Update position on scroll
+                sliderInner.addEventListener('scroll', () => {
+                    currentPosition = sliderInner.scrollLeft;
+                    updateButtonStates();
+                });
+            });
         });
     </script>
 </body>
