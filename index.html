@@ -206,6 +206,8 @@
                     <li class="netflix-nav-item">
                         <a href="#" id="contact-btn" class="contact-button">Let's Connect!!</a>
                     </li>
+
+                    </li>
                 </ul>
                 <button class="mobile-toggle">
                     <i class="fas fa-bars"></i>
@@ -236,6 +238,70 @@
                     <a href="https://github.com/p-kowadkar" target="_blank" class="netflix-social-button">
                         <i class="fab fa-github"></i>
                     </a>
+                </div>
+                <div style="margin-top: 10px; width: 100%; text-align: left;">
+                    <a href="static\Data\Pranav_Kowadkar_Resume.pdf" download class="netflix-social-button" id="resume-button" style="background-color: #e50914; width: auto; min-width: 200px; padding: 0 15px; height: 40px; display: inline-flex; align-items: center; justify-content: center;">
+                        <span id="resume-text" style="white-space: nowrap; text-align: center; width: 100%; font-size: 0.8rem;"></span>
+                    </a>
+                </div>
+<script>
+  const button = document.getElementById('resume-button');
+  const textElement = document.getElementById('resume-text');
+  const texts = ["Hire Me, Maybe?", "Now Streaming: Pranav's Career", "> run resume_pranav.sh"];
+  let currentIndex = 0;
+  let intervalId;
+  let isTyping = false;
+  let currentText = '';
+  let charIndex = 0;
+  
+  function typeWriter() {
+    if (charIndex < texts[currentIndex].length) {
+      currentText += texts[currentIndex].charAt(charIndex);
+      textElement.textContent = currentText;
+      charIndex++;
+      setTimeout(typeWriter, 100);
+    } else {
+      isTyping = false;
+      setTimeout(eraseText, 2000);
+    }
+  }
+  
+  function eraseText() {
+    if (currentText.length > 0) {
+      currentText = currentText.substring(0, currentText.length - 1);
+      textElement.textContent = currentText;
+      setTimeout(eraseText, 50);
+    } else {
+      currentIndex = (currentIndex + 1) % texts.length;
+      charIndex = 0;
+      setTimeout(typeWriter, 500);
+    }
+  }
+  
+  function startAnimation() {
+    if (!isTyping) {
+      isTyping = true;
+      typeWriter();
+    }
+  }
+  
+  // Start animation on page load
+  startAnimation();
+  
+  // Hover effect
+  button.addEventListener('mouseenter', () => {
+    isTyping = false;
+    currentText = '';
+    textElement.textContent = "> run resume_pranav.sh";
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    currentIndex = 2; // Reset to last text
+    charIndex = 0;
+    currentText = '';
+    startAnimation();
+  });
+</script>
                 </div>
             </div>
         </div>
