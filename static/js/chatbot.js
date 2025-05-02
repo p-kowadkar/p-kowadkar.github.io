@@ -142,6 +142,24 @@ function getNYCProximityMessage() {
     return NYC_PROXIMITY_MESSAGES[randomIndex];
 }
 
+// Handle resume download requests
+function shouldShowResumeButton(question) {
+    const keywords = question.toLowerCase();
+    return keywords.includes('resume') || 
+           keywords.includes('cv') || 
+           keywords.includes('curriculum vitae') ||
+           keywords.includes('download resume') ||
+           keywords.includes('get resume');
+}
+
+// Create resume download button HTML
+function createResumeButton() {
+    return `<div class="resume-button-container">
+        <p>Here's a portion of Pranav's qualifications:</p>
+        <a href="./static/Data/Pranav_Kowadkar_Resume.pdf" download class="resume-download-button">RESUME</a>
+    </div>`;
+}
+
 // Extract most relevant resume parts to reduce token count
 function getRelevantResumeInfo(question) {
     // Create a simplified resume summary with core info (more detailed than before)
@@ -264,6 +282,42 @@ function getWelcomeMessage() {
 function getMysteryFallback() {
     const randomIndex = Math.floor(Math.random() * MYSTERY_FALLBACKS.length);
     return MYSTERY_FALLBACKS[randomIndex];
+}
+
+// Add CSS for resume button
+const resumeButtonCSS = `
+.resume-button-container {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.resume-download-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #800000; /* Maroon */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.resume-download-button:hover {
+    background-color: #600000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+}
+`;
+
+// Inject CSS when needed
+function injectResumeButtonCSS() {
+    if (!document.getElementById('resume-button-style')) {
+        const style = document.createElement('style');
+        style.id = 'resume-button-style';
+        style.innerHTML = resumeButtonCSS;
+        document.head.appendChild(style);
+    }
 }
 
 // Function to check if the bot should use a mystery fallback response
@@ -476,7 +530,7 @@ async function loadResumeContext() {
         resumeContext = await res.text();
     } catch (err) {
         resumeContext = '';
-        showBotMessage("I'm unable to access Pranav's resume data at the moment. Please try again later.");
+        showBotMessage("Drama loading... This feature was supposed to work --- until Pranav got ‘busy’ and forgot to update me!!!");
     }
 }
 
