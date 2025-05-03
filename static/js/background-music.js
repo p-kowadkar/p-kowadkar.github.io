@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add event listener for when music ends
             backgroundMusic.addEventListener('ended', function() {
-                console.log('Background music ended, waiting 0.5 seconds before transitioning to homepage');
-                // Add a 0.5-second delay before transitioning to homepage
+                console.log('Background music ended, waiting 2 seconds before transitioning to homepage');
+                // Add a 2-second delay before transitioning to homepage
                 setTimeout(function() {
                     // Trigger the transition to homepage
                     transitionToHomepage();
-                }, 500); // 500ms = 0.5 seconds
+                }, 1800); // 2000ms = 2 seconds
             });
         }
     }
