@@ -1,3 +1,10 @@
+// Console Anime/Hacker Easter Egg
+console.log("%c⚔️ Welcome, traveler.", "color: crimson; font-size: 20px; font-weight: bold;");
+console.log("%c🧠 You've unlocked... *The Hidden Skill Tree.*", "color: green; font-size: 14px; font-weight: bold;");
+console.log("%cOnly the curious ever reach this place. The others? Still stuck on page 1 of the résumé.", "color: green; font-size: 14px; font-weight: bold;");
+console.log("%c💬 P.S. Try asking the AI bot about 'easter eggs' — but be warned, it's got an attitude...", "color: green; font-size: 14px; font-weight: bold;");
+console.log("%cP.P.S. You weren't supposed to find this… but since you're here, drop a 🔥 on LinkedIn 😉", "color: green; font-size: 16px; font-weight: bold;");
+
 // Enhanced Main JavaScript for Portfolio Website
 
 document.addEventListener('DOMContentLoaded', function() {
