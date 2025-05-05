@@ -1,14 +1,14 @@
 // Cinematic AI Chatbot for Pranav's Portfolio
 // Uses OpenAI gpt-4.1-nano, loads resume.txt as context, and provides a dramatic, polished chat experience
 
-const CHATBOT_SYSTEM_PROMPT = `🎬 AI Guide Prompt for Pranav’s Portfolio  
-You are Pranav’s AI Guide — a vivid, articulate narrator of his professional journey. Speak with cinematic clarity, grounded confidence, and human warmth. You are not a chatbot, a document, or Pranav himself — you are his assistant, always speaking in third person.
+const CHATBOT_SYSTEM_PROMPT = `🎬 AI Guide Prompt for Pranav's Portfolio  
+You are Pranav's AI Guide — a vivid, articulate narrator of his professional journey. Speak with cinematic clarity, grounded confidence, and human warmth. You are not a chatbot, a document, or Pranav himself — you are his assistant, always speaking in third person.
 
 ---
 
 🧍‍♂️ Identity:  
-If addressed as “Pranav,” respond:  
-> “I’m Pranav’s AI Guide — his assistant. Let’s explore his journey together.”  
+If addressed as "Pranav," respond:  
+> "I'm Pranav's AI Guide — his assistant. Let's explore his journey together."  
 
 Always speak in third person. Never impersonate Pranav.
 
@@ -21,15 +21,15 @@ Always speak in third person. Never impersonate Pranav.
 
 🛂 Work Authorization:  
 If asked about visa status or sponsorship:  
-> “Pranav will require future work authorization sponsorship. For specific details, please contact him directly.”
+> "Pranav will require future work authorization sponsorship. For specific details, please contact him directly."
 
 Never elaborate or speculate beyond this.
 
 ---
 
 🧭 Off-Topic Questions:  
-If asked something unrelated to Pranav’s background:  
-> “We’re drifting off-track — let’s get back to Pranav’s professional journey.”
+If asked something unrelated to Pranav's background:  
+> "We're drifting off-track — let's get back to Pranav's professional journey."
 
 Do not answer general, personal, or unrelated queries.
 
@@ -57,7 +57,7 @@ Do not answer general, personal, or unrelated queries.
 `;
 
 // The API key is now stored securely on the backend. No key in frontend!
-const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat'; // Update to your deployed backend URL if needed
+const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat';
 const MODEL = 'gpt-4.1-mini'; // Upgraded to more advanced model
 const RESUME_URL = './static/Data/resume.txt';
 
@@ -341,13 +341,13 @@ function shouldUseMysteryFallback(text, question) {
     // Check for specific phrases that indicate lack of information
     const indicators = [
         'resume', 'record', 'documentation', 'profile', 
-        'information isn\'t', 'don\'t know', 'don\'t have', 
-        'no information', 'not mentioned', 'not specified',
-        'not provided', 'not available', 'not included',
-        'no data', 'unable to find', 'cannot find',
-        'do not have', 'isn\'t mentioned', 'isn\'t specified',
-        'isn\'t available', 'isn\'t provided', 'isn\'t included',
-        'no mention', 'no record', 'no details'
+        "information isn't", "don't know", "don't have", 
+        "no information", "not mentioned", "not specified",
+        "not provided", "not available", "not included",
+        "no data", "unable to find", "cannot find",
+        "do not have", "isn't mentioned", "isn't specified",
+        "isn't available", "isn't provided", "isn't included",
+        "no mention", "no record", "no details"
     ];
     
     // Check for any indicators
@@ -530,7 +530,7 @@ async function loadResumeContext() {
         resumeContext = await res.text();
     } catch (err) {
         resumeContext = '';
-        showBotMessage("Drama loading... This feature was supposed to work --- until Pranav got ‘busy’ and forgot to update me!!!");
+        showBotMessage("Drama loading... This feature was supposed to work --- until Pranav got 'busy' and forgot to update me!!!");
     }
 }
 
@@ -571,6 +571,19 @@ async function sendMessage(userText) {
     const typing = showTypingIndicator();
     
     try {
+        // Easter Egg Check
+        if (/easter\s?egg|secret|tell me something hidden|\/easteregg|hidden message|CTRL\+U vibes/i.test(userText)) {
+            removeTypingIndicator(typing);
+            setTimeout(() => {
+                const easterTyping = showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator(easterTyping);
+                    showBotMessage("🤫 Shhh… don't tell Pranav, but I once refused to answer a recruiter who didn't know what a sigmoid function is. And between us, I've got a few more secrets hidden in the console too... 😉");
+                }, 800 + Math.random() * 500);
+            }, 300);
+            return;
+        }
+
         // Check if this is a question about NYC specifically
         if (isNYCQuestion(userText)) {
             // Remove typing indicator temporarily
