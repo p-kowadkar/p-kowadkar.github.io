@@ -114,11 +114,11 @@ const MYSTERY_FALLBACKS = [
 
 // Cinematic relocation messages for when asked about other locations
 const RELOCATION_MESSAGES = [
-    "While Pranav's current base of operations is Jersey City, NJ, his narrative arc is poised for a potential change of setting. He's quite open to relocating his talents to new horizons!",
-    "The current chapter of Pranav's journey unfolds in Jersey City, NJ, though he views his story as one of mobility and adaptation, ready to transport his expertise wherever opportunity beckons.",
-    "Jersey City, NJ serves as Pranav's present stage, but like any compelling protagonist, he's eager to explore new territories and is open to relocating for the right opportunity.",
-    "Though currently anchored in Jersey City, NJ, Pranav's professional voyage isn't bound by geography. He's actively seeking plot twists that might take him to new locations!",
-    "Like a versatile character actor, Pranav currently performs in Jersey City, NJ, but is ready to take his skills on tour, with relocation definitely in his potential future script."
+    "While Pranav's current base of operations is New York, NY, his narrative arc is poised for a potential change of setting. He's quite open to relocating his talents to new horizons!",
+    "The current chapter of Pranav's journey unfolds in New York, NY, though he views his story as one of mobility and adaptation, ready to transport his expertise wherever opportunity beckons.",
+    "New York, NY serves as Pranav's present stage, but like any compelling protagonist, he's eager to explore new territories and is open to relocating for the right opportunity.",
+    "Though currently anchored in New York, NY, Pranav's professional voyage isn't bound by geography. He's actively seeking plot twists that might take him to new locations!",
+    "Like a versatile character actor, Pranav currently performs in New York, NY, but is ready to take his skills on tour, with relocation definitely in his potential future script."
 ];
 
 // Special cinematic NYC proximity messages
@@ -165,7 +165,7 @@ function getRelevantResumeInfo(question) {
     // Create a simplified resume summary with core info (more detailed than before)
     const resumeSummary = {
         profile: "Pranav Kowadkar: Data Scientist/ML Engineer with expertise in machine learning, deep learning, and data engineering. Experience deploying ML solutions across healthcare, finance, and aerospace domains.",
-        location: "Based in Jersey City, NJ. Open to relocation.",
+        location: "Based in New York, NY. Open to relocation.",
         timeline: "April 2020 - July 2022: R&D Software Engineer at Dassault Systems in Pune, India. December 2019 - March 2020: Project Assistant at National Aerospace Labs. December 2018 - October 2019: Programmer Analyst at Cognizant. September 2022 - December 2023: MS in Data Science at NJIT in New Jersey.",
         skills: "Programming: Python, R, C, C++, C#, SQL, PL/SQL, Unix Shell Scripting, .NET. Machine Learning: TensorFlow, PyTorch, Keras, Scikit-learn, NLP, Prompt Engineering. Big Data: Apache Spark, Airflow, Kafka, Hadoop, Databricks. Cloud: AWS, Azure, GCP, Docker.",
         education: "MS in Data Science from NJIT. BE in Mechanical Engineering from VTU.",
