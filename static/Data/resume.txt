@@ -13,10 +13,10 @@ SUMMARY
 CONTACT INFORMATION	
 Phone: +1 973-704-7623 (US) | +91 727-600-3609 (India)  
 Email: pk.kowadkar@gmail.com (US) | ps.kowadkar@gmail.com (India)
-Web: linkedin.com/in/pkowadkar | github.com/p-kowadkar
+Web: linkedin.com/in/pkowadkar | github.com/p-kowadkar | p-kowadkar.github.io
 
 Locations:
-Current Location: Jersey City, New Jersey, USA
+Current Location: New York City, NY, USA
 Born in Location: Chikodi, Karnataka, India
 Schooling: Hubbali, Karnataka, India (class 1-5); Belagavi, Karnataka, India (class 6-10); Bengaluru, Karnataka, India (class 11-12); Belagavi, Karnataka, India (Bachelors), Jersey City, New Jersey, USA (Masters)
 Work: Cognizant (Pune), NAL (Bangalore), Dassault Systems (Pune), NJIT (Newark), Bayer (Remote, Newark), JerseySTEM (Remote), Vaandu (Newark), NJIT (Newark)
