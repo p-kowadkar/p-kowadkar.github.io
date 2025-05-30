@@ -2,3 +2,6 @@ deployment_instructions.md
 .env
 .env.local
 node_modules/
+venv
+.venv
+**pycache**
