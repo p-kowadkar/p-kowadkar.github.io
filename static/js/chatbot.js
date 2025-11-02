@@ -57,8 +57,9 @@ Do not answer general, personal, or unrelated queries.
 `;
 
 // The API key is now stored securely on the backend. No key in frontend!
+// Updated to use Gemini 2.5 Flash (primary) with Llama 4 Maverick fallback
 const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat';
-const MODEL = 'gpt-4.1'; // Upgraded to more advanced model
+const MODEL = 'gemini-2.5-flash'; // Using Gemini 2.5 Flash via backend
 const RESUME_URL = './static/Data/resume.txt';
 
 let resumeContext = '';
@@ -664,16 +665,20 @@ async function sendMessage(userText) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: MODEL,
-                messages: messages.map(m => ({ role: m.role, content: m.content })),
-                max_tokens: 150,
-                temperature: 0.5 // Reduced for more straightforward responses
+                message: userText,
+                session_id: `session-${Date.now()}`
             })
         });
         if (!response.ok) throw new Error('API error');
         const data = await response.json();
         
-        let botReply = data.choices?.[0]?.message?.content?.trim() || "";
+        // Backend returns { message: "...", response: "...", source: "gemini-2.5-flash" or "llama-4-maverick" }
+        let botReply = data.message || data.response || "";
+        
+        // Optional: Log which model was used (for debugging)
+        if (data.source) {
+            console.log(`✨ Response from: ${data.source}`);
+        }
         
         // Handle the case when information is not available
         if (shouldUseMysteryFallback(botReply, userText)) {
