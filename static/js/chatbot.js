@@ -59,7 +59,7 @@ Do not answer general, personal, or unrelated queries.
 // The API key is now stored securely on the backend. No key in frontend!
 // Updated to use Gemini 2.5 Flash (primary) with Llama 4 Maverick fallback
 const OPENAI_API_URL = 'https://pranav-chatbot-proxy.onrender.com/api/chat';
-const MODEL = 'gemini-2.5-flash'; // Using Gemini 2.5 Flash via backend
+const MODEL = 'gpt-4.1';
 const RESUME_URL = './static/Data/resume.txt';
 
 let resumeContext = '';
